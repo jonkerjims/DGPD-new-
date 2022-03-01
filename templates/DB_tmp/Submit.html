@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>DGPD</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/DB_CSS/home.css"/>
+</head>
+
+<body>
+<div class="layui-container" style="min-width:1140px;">
+    <div class="layui-row" id="header">
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"></div>
+
+        <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+            <ul class="layui-nav" lay-filter="" id="navbar">
+                <li class="layui-nav-item ">
+                    <a href="../index">Home</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="../About">About</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="../Download">Download</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="../Submit">Submit</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="../Contact">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="layui-row" id="bodyer">
+        <div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1"
+             id="overview" style="margin-bottom:20px;margin-top:20px;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend><i>Welcome to submit new entries to the database</i></legend>
+
+            </fieldset>
+            <div style="margin: auto">
+                <i style="font-style:normal;text-align:center;text-justify:inter-ideograph;font-size: 15px;">If you would like to share your data, please fill out the necessary information in the form below and we will add it to DGPD soon. Thank you.</i>
+            </div>
+            <br><br>
+            <div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1"
+                 id="overview">
+                <form id="form" class="layui-form layui-form-pane" action="" method="get" >
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">Gene name</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="gene_name" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">Organism</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="organism" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">E-mail(*)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="email" lay-verify="email" placeholder="" autocomplete="on"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">More introduction (limited to 500 words)</label>
+                        <div class="layui-input-block">
+                            <textarea name="More" placeholder="" lay-verify="limitLength" maxlength="500"
+                                      class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+{#                            <button id="submit" class="layui-btn" >Submit</button>#}
+                            <input id="submit" type="button" class="layui-btn" value="Submit">
+                            <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<div class="layui-row" id="footer">
+
+    <div class="copyright">
+        Copyright©
+        <a class="ow" href="https://www.ahau.edu.cn/" target="_blank">AnHui Argricultural University</a> ©All Rights
+        Reserved.
+    </div>
+    <div class="use">
+        <!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->
+    </div>
+</div>
+<script src="/static/js/jquery-1.9.1.min.js"></script>
+<script src="/static/layui/layui.all.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+
+
+    form = layui.form;
+    form.verify({
+        limitLength: [
+            /^[\w\W]{0,500}$/
+            , 'More than 500 words'
+        ]
+    });
+    $('#submit').click(function () {
+        $.ajax({
+            type:'GET',
+            url:'../SubmitCol/',
+            data:$('#form').serialize(),
+            success:function (data) {
+                if (data['state'] == 1){
+                    layer.msg('Thank you for your submission!');
+                }
+                else {
+                    layer.msg('The submission failed!');
+                }
+            }
+        })
+    })
+
+
+
+
+
+</script>
+</body>
+
+</html>

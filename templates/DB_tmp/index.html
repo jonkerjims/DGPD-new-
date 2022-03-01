@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>DGPD</title>
+		<link rel="stylesheet" href="/static/layui/css/layui.css">
+		<link rel="stylesheet" href="/static/css/DB_CSS/home.css">
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"></div>
+
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<ul class="layui-nav" lay-filter="" id="navbar">
+						<li class="layui-nav-item layui-this">
+							<a href="../index">Home</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../About">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Contact">Contact</a>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="layui-row" id="bodyer">
+
+				<div class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8" id="panel-left">
+
+					<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="overview" style="margin-bottom:20px;margin-top:20px;">
+						<fieldset class="layui-elem-field layui-field-title">
+							<legend><i>Overview</i></legend>
+						</fieldset>
+						<div class="layui-text" style="text-align: justify;text-justify:inter-ideograph;">
+							Dense granular protein is secreted by the specific secretory organelle—dense granules of the Apicomplexans. It is involved in many biological processes such as vacuolar membrane material transport, host organelle recruitment, tissue formation of tube network and host immune response regulation and played an important role in the proliferation and pathogenicity of parasite. By the development of modern technologies, Toxoplasma gondii dense granule protein in different aspects and their functions are measured and reported, this  will be an important way to reveal the mechanism of infection and pathogenicity.
+						</div>
+					</div>
+
+					<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="overview">
+
+						<fieldset class="layui-elem-field" style="">
+							<legend>Browse</legend>
+							<form id="select" class="layui-form" target="_top" action="../Search" style="margin-right: 10%;" accept-charset="utf-8")>
+                                <div class="layui-form-item layui-hide">
+									<div class="layui-input-block">
+										<input id="hideU" type="text" required lay-verify="required" placeholder="Type a Organism or gene here" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+
+                                <div class="layui-form-item">
+									<label class="layui-form-label">Organism</label>
+									<div class="layui-input-block">
+										<select id="organism" name="organism" lay-filter="organism">
+											<option value="">Select Organism</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">Gene name</label>
+									<div class="layui-input-block">
+										<select id="gene_name" name="gene_name" lay-filter="gene_name">
+											<option  value="">Select Gene name</option>
+										</select>
+									</div>
+								</div>
+
+
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<button class="layui-btn" lay-submit lay-filter="*">Submit</button>
+										<button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset" id="reset" onclick="formClick(this,selectId,'reset')">Reset</button>
+									</div>
+								</div>
+							</form>
+						</fieldset>
+						<fieldset class="layui-elem-field" style="">
+							<legend>Search</legend>
+							<form id="input" class="layui-form" target="_top" action="../Search" style="margin-right: 10%;">
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input id="userInput" type="text" name="userInput" required lay-verify="required" placeholder="Type a Organism or gene here" autocomplete="off" class="layui-input">
+										<div class="layui-text">
+										<p style="margin:4px 0 4px 0">Example:
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">Cystoisospora suis</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">HHA_270250</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">HHA_227280</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">Toxoplasma</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">TgGRA6</a>;
+                                            <a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">cystoisospora suis</a>
+										</p>
+										</div>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<button class="layui-btn" lay-submit lay-filter="*">Submit</button>
+										<button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset" id="reset" onclick="formClick(this,selectId,'reset')">Reset</button>
+									</div>
+								</div>
+							</form>
+						</fieldset>
+
+					</div>
+
+				</div>
+				<div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4" id="panel-right" style="margin-bottom:20px;margin-top:65px;text-align:center">
+					<table class="layui-table" style="margin-bottom:0px;">
+						<thead>
+							<tr>
+								<td colspan="3" style="font-size:20px">Database Statistics</td>
+							</tr>
+							<tr>
+								<td>State</td>
+								<td>Organism</td>
+								<th>Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="5">Authenticated</td>
+								<td>Hammondia hammondi</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>Neospora</td>
+                                <td></td>
+							</tr>
+							<tr>
+								<td>Toxoplasma</td>
+                                <td></td>
+							</tr>
+							<tr>
+								<td>Cystoisospora suis</td>
+                                <td></td>
+							</tr>
+							<tr>
+								<td>Plasmodium falciparum</td>
+                                <td></td>
+							</tr>
+							<tr>
+								<td rowspan="5">Unauthorized</td>
+								<td>Hammondia hammondi</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>Neospora</td>
+                                <td></td>
+							</tr>
+                            <tr>
+								<td>Toxoplasma</td>
+                                <td></td>
+							</tr>
+                            <tr>
+								<td>Cystoisospora suis</td>
+                                <td></td>
+							</tr>
+                            <tr>
+								<td>Plasmodium falciparum</td>
+                                <td></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="layui-text">
+						
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="layui-row" id="footer">
+
+			<div class="copyright">
+				Copyright©
+				<a class="ow" href="https://www.ahau.edu.cn/" target="_blank">AnHui Argricultural University</a> ©All Rights Reserved.
+			</div>
+
+		</div>
+        <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+		<script src="/static/layui/layui.all.js"></script>
+
+
+        <script>
+			form = layui.form;
+			var selectId = new Array();
+
+			function formClick(select, selectId, value) {
+
+				if($.inArray(select, selectId) == -1) {
+
+					if(select.getAttribute("id") == "reset") {
+						document.getElementById("hideU").value = "";
+						document.getElementById("gene_name").options.length = 1;
+						document.getElementById("organism").options.length = 1;
+						selectId = [];
+					} else {
+						selectId.push(select);
+					}
+
+				}
+				console.log(selectId)
+                //初始化下来框的option
+				for(var i = $.inArray(select, selectId)+1 ; i < selectId.length; i++) {
+					selectId[i].options.length = 1;
+				}
+				for(var i = selectId.length - 1; i >= $.inArray(select, selectId); i--) {
+					if($(selectId[i]).val() == "") {
+					    //从i中删除
+						selectId.splice(i, 0);
+					}
+				}
+
+				/*if(select.getAttribute("id") == "Gene" && $(select).val() == "") {
+					document.getElementById("cDNA").options.length = 1;
+					document.getElementById("cDNA").options[0].innerHTML = "Select Gene First";
+				} else if(select.getAttribute("id") == "Gene") {
+					document.getElementById("cDNA").options[0].innerHTML = "Select Mutation";
+				}*/
+				//console.log($('#select').serialize());
+				$.ajax({
+                    async:false,
+					type: "get",
+					url: "../indexCol/",
+					//异步上传数据
+					data: $('#select').serialize(),
+					success: function(msg) {
+
+						console.log(typeof(msg))
+						json_ = msg;
+						//console.log(json_);
+						for(selectName in json_) {
+							console.log('选择名字是',selectName,typeof(selectName));
+							var tempSelect = document.getElementById(selectName);
+
+                            tempSelect.options.length = 1;
+                            console.log(1)
+							json_[selectName].sort();
+							for(optionId in json_[selectName]) {
+								// console.log('选择的字段是',json_[selectName][optionId])
+								var tempOption = new Option(json_[selectName][optionId], json_[selectName][optionId]);
+								tempSelect.appendChild(tempOption);
+								console.log(2)
+								tempOption.innerHTML = json_[selectName][optionId];
+								tempOption.value = json_[selectName][optionId];
+							}
+						}
+						form.render('select');
+					}
+				});
+
+				/* if($(document.getElementById("Gene")).val()!=""&&data.value!=null)
+				{
+					console.log(document.getElementById("cDNA").options[0]);
+				} */
+
+				form.render('select');
+			};
+			window.onload = function() {
+
+				formClick(document.getElementById("reset"), selectId, "reset");
+
+				form.on('select(gene_name)', function(data) {
+					document.getElementById("hideU").value = "1";
+					formClick(document.getElementById("gene_name"), selectId, data.value);
+				});
+				form.on('select(organism)', function(data) {
+					document.getElementById("hideU").value = "1";
+					formClick(document.getElementById("organism"), selectId, data.value);
+
+				});
+
+
+				/*form.on('select(Level)', function(data) {
+					document.getElementById("hideU").value = "1";
+					formClick(document.getElementById("Level"), selectId, data.value);
+				});*/
+				/* form.on('select(reset)', function(data) {
+					formClick(document.getElementById("reset"));
+				}); */
+
+			};
+			function exampleFun(t) {
+				$("#userInput").val("");
+				$("#userInput").val($(t).text());
+			};
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,7 @@
+# Django的ORM自带的使用models像数据库中迁移的命令（正向生成）
+
+python manage.py makemigrations
+python manage.py migrate
+
+#Django也支持从云数据库反向生成ORM的models（反向生成）
+python manage.py inspectdb

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>dbWorm</title>
+		<link rel="stylesheet" href="/static/layui/css/layui.css">
+		<link rel="stylesheet" href="/static/css/DB_CSS/home.css">
+	</head>
+
+	<body>
+		<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"></div>
+
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<ul class="layui-nav" lay-filter="" id="navbar">
+						<li class="layui-nav-item layui-this">
+							<a href="../index">Home</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../About">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Contact">Contact</a>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="layui-row" id="bodyer">
+
+				<div class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8" id="panel-left">
+
+					<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="overview" style="margin-bottom:20px;margin-top:20px;">
+						<fieldset class="layui-elem-field layui-field-title">
+							<legend><i>Overview</i></legend>
+						</fieldset>
+						<div class="layui-text" style="text-align: justify;text-justify:inter-ideograph;">
+							The database of mutation Markers for anti-cancer drug Sensitivity (dbMCS) is a comprehensive literature-based database of mutation markers that indicate drug sensitivity or resistance.
+							At present, the dbMCS contains 3136 unique entries recording mutation-disease-drug relationships with sensitivity and 1275 unique entries with resistance,
+							involving in 185 cancer types or subtypes, and 463 kinds of anti-cancer drugs. Users can browse or search the relevant information by different key words conveniently.
+							These data can be used to improve and evaluate the algorithm for identifying the mutation markers of anti-cancer drug sensitivity and predicting drug sensitivity.
+						</div>
+					</div>
+
+					<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="overview">
+
+						<fieldset class="layui-elem-field" style="">
+							<legend>Browse</legend>
+							<form id="select" class="layui-form" target="_top" action="../Search" style="margin-right: 10%;" accept-charset="utf-8")>
+                                <div class="layui-form-item layui-hide">
+									<div class="layui-input-block">
+										<input id="hideU" type="text" required lay-verify="required" placeholder="Type a disease, gene or mutation here" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+
+                                <div class="layui-form-item">
+									<label class="layui-form-label">Organism</label>
+									<div class="layui-input-block">
+										<select id="organism" name="organism" lay-filter="organism">
+											<option value="">Select Organism</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">Gene name</label>
+									<div class="layui-input-block">
+										<select id="gene_name" name="gene_name" lay-filter="gene_name">
+											<option  value="">Select Gene name</option>
+										</select>
+									</div>
+								</div>
+
+
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<button class="layui-btn" lay-submit lay-filter="*">Submit</button>
+										<button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset" id="reset" onclick="formClick(this,selectId,'reset')">Reset</button>
+									</div>
+								</div>
+							</form>
+						</fieldset>
+						<fieldset class="layui-elem-field" style="">
+							<legend>Search</legend>
+							<form id="input" class="layui-form" target="_top" action="../Search" style="margin-right: 10%;">
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input id="userInput" type="text" name="userInput" required lay-verify="required" placeholder="Type a disease, gene or mutation here" autocomplete="off" class="layui-input">
+										<div class="layui-text">
+										<p style="margin:4px 0 4px 0">Example:
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">Acute Lymphocytic Leukemia</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">AKT1</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">Ceritinib</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">chr9:g.133748283C>T</a>;
+											<a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">c.1108G>T</a>;
+                                            <a onclick="exampleFun(this)" style="cursor:pointer;color:#009688;">p.Y253H</a>
+										</p>
+										</div>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<button class="layui-btn" lay-submit lay-filter="*">Submit</button>
+										<button type="reset" class="layui-btn layui-btn-primary" lay-filter="reset" id="reset" onclick="formClick(this,selectId,'reset')">Reset</button>
+									</div>
+								</div>
+							</form>
+						</fieldset>
+
+					</div>
+
+				</div>
+				<div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4" id="panel-right" style="margin-bottom:20px;margin-top:65px;">
+					<table class="layui-table" style="margin-bottom:0px;">
+						<thead>
+							<tr>
+								<th colspan="3" style="font-size:20px">Database Statistics</th>
+							</tr>
+							<tr>
+								<th>Feature</th>
+								<th>Type</th>
+								<th>Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="10">Mutation</td>
+								<td>Missense</td>
+								<td>978</td>
+							</tr>
+							<tr>
+								<td>IF-indel</td>
+								<td>96</td>
+							</tr>
+							<tr>
+								<td>FS-indel</td>
+								<td>13</td>
+							</tr>
+							<tr>
+								<td>Duplication</td>
+								<td>19</td>
+							</tr>
+							<tr>
+								<td>Complex-indel</td>
+								<td>40</td>
+							</tr>
+							<tr>
+								<td>Copy Number Aberration</td>
+								<td>47</td>
+							</tr>
+							<tr>
+								<td>Nonsense</td>
+								<td>31</td>
+							</tr>
+							<tr>
+								<td>Synonymous</td>
+								<td>16</td>
+							</tr>
+							<tr>
+								<td>Noncoding</td>
+								<td>4</td>
+							</tr>
+							<tr>
+								<td>Other</td>
+								<td>27</td>
+							</tr>
+							<tr>
+								<td>Gene</td>
+								<td></td>
+								<td>146</td>
+							</tr>
+							<tr>
+								<td>Disease</td>
+								<td></td>
+								<td>185</td>
+							</tr>
+							<tr>
+								<td>Drug</td>
+								<td></td>
+								<td>486</td>
+							</tr>
+							<tr>
+								<td>Reference</td>
+								<td></td>
+								<td>1306</td>
+							</tr>
+
+						</tbody>
+					</table>
+					<div class="layui-text">
+						FS: frameshift; IF: inframe; Complex-indel: insertion occurs simultaneously with deletion
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="layui-row" id="footer">
+
+			<div class="copyright">
+				Copyright©
+				<a class="ow" href="https://www.ahau.edu.cn/" target="_blank">AnHui Argricultural University</a> ©All Rights Reserved.
+			</div>
+
+		</div>
+        <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+		<script src="/static/layui/layui.all.js"></script>
+
+
+        <script>
+			form = layui.form;
+			var selectId = new Array();
+
+			function formClick(select, selectId, value) {
+
+				if($.inArray(select, selectId) == -1) {
+
+					if(select.getAttribute("id") == "reset") {
+						document.getElementById("hideU").value = "";
+						document.getElementById("gene_name").options.length = 1;
+						document.getElementById("organism").options.length = 1;
+						selectId = [];
+					} else {
+						selectId.push(select);
+					}
+
+				}
+				console.log(selectId)
+                //初始化下来框的option
+				for(var i = $.inArray(select, selectId)+1 ; i < selectId.length; i++) {
+					selectId[i].options.length = 1;
+				}
+				for(var i = selectId.length - 1; i >= $.inArray(select, selectId); i--) {
+					if($(selectId[i]).val() == "") {
+					    //从i中删除
+						selectId.splice(i, 0);
+					}
+				}
+
+				/*if(select.getAttribute("id") == "Gene" && $(select).val() == "") {
+					document.getElementById("cDNA").options.length = 1;
+					document.getElementById("cDNA").options[0].innerHTML = "Select Gene First";
+				} else if(select.getAttribute("id") == "Gene") {
+					document.getElementById("cDNA").options[0].innerHTML = "Select Mutation";
+				}*/
+				//console.log($('#select').serialize());
+				$.ajax({
+                    async:false,
+					type: "get",
+					url: "../indexCol/",
+					//异步上传数据
+					data: $('#select').serialize(),
+					success: function(msg) {
+
+						console.log(typeof(msg))
+						json_ = msg;
+						//console.log(json_);
+						for(selectName in json_) {
+							console.log('选择名字是',selectName,typeof(selectName));
+							var tempSelect = document.getElementById(selectName);
+
+                            tempSelect.options.length = 1;
+                            console.log(1)
+							json_[selectName].sort();
+							for(optionId in json_[selectName]) {
+								// console.log('选择的字段是',json_[selectName][optionId])
+								var tempOption = new Option(json_[selectName][optionId], json_[selectName][optionId]);
+								tempSelect.appendChild(tempOption);
+								console.log(2)
+								tempOption.innerHTML = json_[selectName][optionId];
+								tempOption.value = json_[selectName][optionId];
+							}
+						}
+						form.render('select');
+					}
+				});
+
+				/* if($(document.getElementById("Gene")).val()!=""&&data.value!=null)
+				{
+					console.log(document.getElementById("cDNA").options[0]);
+				} */
+
+				form.render('select');
+			};
+			window.onload = function() {
+
+				formClick(document.getElementById("reset"), selectId, "reset");
+
+				form.on('select(gene_name)', function(data) {
+					document.getElementById("hideU").value = "1";
+					formClick(document.getElementById("gene_name"), selectId, data.value);
+				});
+				form.on('select(organism)', function(data) {
+					document.getElementById("hideU").value = "1";
+					formClick(document.getElementById("organism"), selectId, data.value);
+
+				});
+
+
+				/*form.on('select(Level)', function(data) {
+					document.getElementById("hideU").value = "1";
+					formClick(document.getElementById("Level"), selectId, data.value);
+				});*/
+				/* form.on('select(reset)', function(data) {
+					formClick(document.getElementById("reset"));
+				}); */
+
+			};
+			function exampleFun(t) {
+				$("#userInput").val("");
+				$("#userInput").val($(t).text());
+			};
+		</script>
+	</body>
+
+</html>

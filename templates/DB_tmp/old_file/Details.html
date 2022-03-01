@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>dbWorm</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    {#    <link rel="stylesheet" href="/static/layui-v2.6.8/layui/css/layui.css">#}
+    <link rel="stylesheet" href="/static/css/DB_CSS/home.css"/>
+</head>
+
+<body>
+<div class="layui-container" style="min-width:1140px;">
+			<div class="layui-row" id="header">
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="banner"></div>
+
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" id="bar">
+					<ul class="layui-nav" lay-filter="" id="navbar">
+						<li class="layui-nav-item ">
+							<a href="../index">Home</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../About">About</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Download">Download</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Submit">Submit</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="../Contact">Contact</a>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+    <div class="layui-row" id="bodyer">
+        <div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-xs-offset1 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1"
+             style="margin-bottom:20px;margin-top:20px;">
+
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>Properties</legend>
+            </fieldset>
+            <table id="Details" class="layui-table">
+                <colgroup>
+                    <col width="200"/>
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr class="gene_name">
+                    <td>Gene_name</td>
+                    <td class="gene_name"></td>
+                </tr>
+                <tr class="organism">
+                    <td>Organism</td>
+                    <td class="organism"></td>
+                </tr>
+                <tr class="evidece_level">
+                    <td>Evidece_level</td>
+                    <td class="evidece_level"></td>
+                </tr>
+                <tr class="intron">
+                    <td>Intron</td>
+                    <td class="intron"></td>
+                </tr>
+                <tr class="signal_peptide">
+                    <td>Signal_peptide</td>
+                    <td class="signal_peptide"></td>
+                </tr>
+                <tr class="tmhmm">
+                    <td>Tmhmm</td>
+                    <td class="tmhmm"></td>
+                </tr>
+                <tr class="pmid">
+                    <td>Pmid</td>
+                    <td class="pmid"></td>
+                </tr>
+
+                <tr class="molecular_weight">
+                    <td>Molecular_weight</td>
+                    <td class="molecular_weight"></td>
+                </tr>
+
+                <tr class="domains">
+                    <td>Domains</td>
+                    <td class="domains"></td>
+                </tr>
+
+                <tr class="date_source">
+                    <td>Date_source</td>
+                    <td class="date_source"></td>
+                </tr>
+
+
+                {#                <tr>#}
+                {#                    <td>Evidence(s)</td>#}
+                {#                    <td style="padding:0;margin:0;">#}
+                {#                        <table class="layui-table" style="margin:-1px 0">#}
+                {#                            <colgroup>#}
+                {#                                <col width=50%/>#}
+                {#                                <col width=50%/>#}
+                {##}
+                {#                            </colgroup>#}
+                {#                            <thead>#}
+                {#                            <tr>#}
+                {#                                <th class="Reference">Reference</th>#}
+                {#                                <th class="Evidence_level">Level</th>#}
+                {#                            </tr>#}
+                {#                            </thead>#}
+                {#                            <tbody class="Evidence">#}
+                {#                                <tr>#}
+                {#                                    <th class="Reference"></th>#}
+                {#                                    <th class="Evidence_level"></th>#}
+                {#                                </tr>#}
+                {#                            </tbody>#}
+                {#                        </table>#}
+                {##}
+                {#                    </td>#}
+                {#                </tr>#}
+
+
+                </tbody>
+
+            </table>
+
+            <div id="layerDemo" style="margin-bottom: 0;">
+                <div class="layui-btn-container" style="">
+                    <button data-method="notice" class="layui-btn layui-btn-xs"><i class="layui-icon">&#xe642;</i> User
+                        comment
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="layui-row" id="footer">
+
+                <div class="copyright">
+                    Copyright©
+                    <a class="ow" href="https://www.ahau.edu.cn/" target="_blank">AnHui Argricultural University</a>
+                    ©All Rights Reserved.
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{#============================================弹出层===========================================#}
+<div>
+    <div id="TTT" class="layui-hide"
+         style="padding: 10px; line-height: 22px; background-color: #393D49; color: #000000; font-weight: 300;">
+        <form class="layui-form layui-form-pane" action="comment" method="get" lay-filter="formTest">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">E-mail(*)</label>
+                <div class="layui-input-block">
+                    <input id="email" type="text" name="Email" lay-verify="email" placeholder="" autocomplete="on"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">Reference</label>
+                <div class="layui-input-block">
+                    <input id="reference" type="text" name="Reference" placeholder="" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">New findings in oncology </label>
+                <div class="layui-input-block">
+							<textarea id="text" name="More" placeholder="" lay-verify="limitLength" maxlength="500"
+                                      class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <!-- <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">Submit</button>
+                    <button type="" class="layui-btn layui-btn">取消</button>
+                </div>
+            </div> -->
+        </form>
+
+    </div>
+
+</div>
+{#============================================弹出层===========================================#}
+<script src="/static/layui/layui.all.js"></script>
+{#<script src="/static/layui-v2.6.8/layui/layui.js"></script>#}
+<script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+
+{#===============================================弹出层Script=======================================#}
+<script>
+    layui.use('layer', function () { //独立版的layer无需执行这一句
+        var $ = layui.jquery,
+            layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+            notice: function () {
+                document.getElementById('TTT').classList.remove('layui-hide')
+                //示范一个公告层
+                layer.open({
+                    anim: 2,
+                    skin: 'demo-class',
+                    type: 1,
+                    title: '感谢您的评论' //不显示标题栏
+                    ,
+                    closeBtn: 0,
+                    area: '600px;',
+                    shade: 0.8,
+                    id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                    ,
+                    btn: ['Submit'],
+                    btnAlign: 'c', //按钮组
+                    moveType: 1 //拖拽模式，0或者1
+                    ,
+                    content: $('#TTT'),
+                    success: function (layero) {
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.click(function () {
+                            var email = document.getElementById('email').value;
+                            var reference = document.getElementById('reference').value;
+                            var text = document.getElementById('text').value;
+                            console.log(email + reference + text)
+                            $.ajax({
+                                url: "../userCommentCol/",
+                                data: {'email': email, 'reference': reference, 'text': text},
+                                type: "GET",
+                                success: function (result) {
+                                    if (result["state"] == 0) {
+                                        layer.msg('提交失败', {icon: 2, time: 1500});
+                                    } else {
+                                        layer.msg('提交成功', {icon: 1, time: 1500});
+                                    }
+                                }
+                            })
+
+                            document.getElementById('TTT').classList.add('layui-hide')
+                        })
+                    }
+                });
+            },
+            offset: function (othis) {
+                var type = othis.data('type'),
+                    text = othis.text();
+
+                layer.open({
+                    type: 1,
+                    offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                    ,
+                    id: 'layerDemo' + type //防止重复弹出
+                    ,
+                    content: '<div style="padding: 20px 100px;">' + text + '</div>',
+                    btn: '关闭全部',
+                    btnAlign: 'c' //按钮居中
+                    ,
+                    shade: 0 //不显示遮罩
+                    ,
+                    yes: function () {
+                        layer.closeAll();
+                    }
+                });
+            }
+        };
+
+        $('#layerDemo .layui-btn').on('click', function () {
+            var othis = $(this),
+                method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+
+        //多窗口模式 - esc 键
+        $(document).on('keyup', function (e) {
+            if (e.keyCode === 27) {
+                layer.close(layer.escIndex ? layer.escIndex[0] : 0);
+            }
+        });
+    });
+</script>
+<script>
+     function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    function replace_add(str) {
+        if(str){
+            if (str.indexOf('+') != -1){
+                str = str.replace('+',' ')
+                return str;
+            }else{
+                return str;
+            }
+        }
+        else {
+            return ''
+        }
+    }
+    organism =  replace_add(getQueryString("organism"))
+    gene_name = replace_add(getQueryString("gene_name"))
+    evidece_level = replace_add(getQueryString("evidece_level"))
+    intron = replace_add(getQueryString("intron"))
+    signal_peptide = replace_add(getQueryString("signal_peptide"))
+    tmhmm = replace_add(getQueryString("tmhmm"))
+    pmid = replace_add(getQueryString("pmid"))
+    molecular_weight = replace_add(getQueryString("molecular_weight"))
+    domains = replace_add(getQueryString("domains"))
+    date_source = replace_add(getQueryString("date_source"))
+
+    $.ajax({
+        type:'get',
+        url:'../DetailsCol/',
+        data:"gene_name="+gene_name+
+            "&"+"organism="+organism+
+            "&"+"evidece_level="+evidece_level+
+            "&"+"intron="+intron+
+            "&"+"signal_peptide="+signal_peptide+
+            "&"+"tmhmm="+tmhmm+
+            "&"+"pmid="+pmid+
+            "&"+"molecular_weight="+molecular_weight+
+            "&"+"domains="+domains+
+            "&"+"date_source="+date_source,
+
+        success:function (msg) {
+
+            data = msg;
+            keys = ['gene_name','organism','evidece_level','intron','signal_peptide','tmhmm','pmid','molecular_weight','domains','date_source']
+            for (keyid in keys){
+                 if(keys[keyid] == 'gene_name'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                } if(keys[keyid] == 'organism'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+                if(keys[keyid] == 'evidece_level'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+                if(keys[keyid] == 'intron'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+                if(keys[keyid] == 'signal_peptide'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+                if(keys[keyid] == 'tmhmm'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+                if(keys[keyid] == 'pmid'){
+                    if  (data[keys[keyid]] != ''){
+                        $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    }
+                    else {
+                        $('.' + keys[keyid])[1].innerHTML = "<p style='color:red;'>No Data Source</p>"
+                    }
+
+                    continue;
+                }
+                if(keys[keyid] == 'molecular_weight'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+                if(keys[keyid] == 'domains'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+                if(keys[keyid] == 'date_source'){
+                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    continue;
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+
+</html>
