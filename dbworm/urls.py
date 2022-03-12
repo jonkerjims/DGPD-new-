@@ -19,8 +19,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('dbWorm/',include('DB.urls')),
-    path('dbPredict/',include('Predict.urls')),
+    # path('admin/', admin.site.urls),
+    path('DGPD/',include('DB.urls')),
+    path('GRAGCN/',include('Predict.urls')),
     path('DBA/',include('DBA.urls'))
 ]

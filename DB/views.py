@@ -166,16 +166,16 @@ def userCommentCol(request):
                 send_email_list = []
                 for item in query_set:
                     send_email_list.append(item['email'])
-
+                print(send_email_list)
                 models.User_comment.objects.create(email=email, reference=reference, text=text)
                 msg = '<div><b>User:</b>'+email+'<br><b>Comment:</b>The Reference is ['+reference+']. This UserComment is :'+text+'</div>'
                 subject = 'You have a UserComment!'
-                print(1)
+                # print(1)
                 send_email(send_email_list,msg,subject)
                 result['state'] = 1
                 return JsonResponse(result)
-        except Exception:
-            print(Exception)
+        except BaseException as e:
+            print(66666666,e)
             result['state'] = 0
             return JsonResponse(result)
 

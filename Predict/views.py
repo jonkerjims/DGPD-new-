@@ -57,7 +57,7 @@ def txt_upDownload(request):
             'verify_res': verify_res,
             'filename': filename,
         }
-        time.sleep(3)
+        # time.sleep(3)
 
         return JsonResponse(data=data)
 

@@ -87,8 +87,8 @@ def send_email(emails,massage,subject,name=None):
     # receiver = '809341512@qq.com'
     # receiver = 'zhaohuiyouxiang01@163.com'
 
-    #receiver = email_list#全体成员接收邮件总开关====================================================================================
-    receiver = ['809341512@qq.com']
+    receiver = email_list#全体成员接收邮件总开关====================================================================================
+    # receiver = ['809341512@qq.com']
     receiver_alias = name
 
     body = massage
