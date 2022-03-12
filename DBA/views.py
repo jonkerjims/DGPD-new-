@@ -36,12 +36,12 @@ def login(request):
         userId = request.POST.get('userId')
         code = request.POST.get('code')
         password = request.POST.get('password')
-
         request.session['userId'] = userId
-        # print(userId,'/',query_set[0].email)
+        print(userId,password)
         # if query_set[0].email:
         try:
             query_set = models.DBA_manager.objects.filter(email=userId)
+            print(query_set[0].email)
             if password != '':
                 # hash_pwd = hashlib.new('md5', hz.encode('utf-8')).hexdigest()
                  if query_set[0].password == password:
@@ -108,13 +108,12 @@ def acquire_code(request):
             if list(query_set) == []:
                 t = time.time()
                 hz = 'ID_%s' % int(round(t * 1000))
-                # print(code)
                 hash_pwd = hashlib.new('md5',hz.encode('utf-8')).hexdigest()
                 # print(hash_pwd)
                 models.DBA_manager.objects.create(email=userId,code=code,add_by=userId,original_id=hz,password=hash_pwd)
             else:
                 models.DBA_manager.objects.filter(email=userId).update(code=code)
-                # print(code)
+                print(code)
 
             msg = '验证码：<a style="color:#2684b6">' + code + '</a>,此验证码用于登录“ dbWorm后台管理系统。”'
             subject = '【生物信息实验室】'
@@ -127,9 +126,9 @@ def acquire_code(request):
                 'code':code,
             }
             return JsonResponse(data)
-        except Exception as e:
-            # print(e)
+        except Exception:
             pass
+
 
 def logout(request):
     # 删除session

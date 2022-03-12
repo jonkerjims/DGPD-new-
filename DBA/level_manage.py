@@ -23,12 +23,13 @@ def level_manage_data(request):
         if request.method == 'GET':
             page = request.GET.get('page')
             limit = request.GET.get('limit')
-
+            print(limit,page)
             query_set = models.DBA_manager.objects.filter(is_delete=1).values('id', 'email', 'code', 'age', 'level',
                                                                               'name', 'original_id','password').order_by('id')
             count = query_set.count()
             paginator = Paginator(query_set, limit)
             query_set = paginator.page(number=page)
+            print(query_set)
             query_set = trans_queryset_toJson(list(query_set), count)
             return JsonResponse(query_set)
     except Exception:
@@ -47,8 +48,8 @@ def level_manage_data_save(request):
             password = request.GET.get('password')
             save_by = request.GET.get('save_by')
             query_set = models.DBA_manager.objects.filter(original_id=original_id)
-            # print('前',password)
-            # print('数据库',query_set[0].password)
+            print('前',password)
+            print('数据库',query_set[0].password)
             hash_pwd = hashlib.new('md5', query_set[0].password.encode('utf-8')).hexdigest()
             if password == hash_pwd:
                 password = query_set[0].password
@@ -104,7 +105,7 @@ def level_manage_data_add(request):
         return JsonResponse(data)
 
     except Exception:
-        # print(Exception)
+        print(Exception)
         data = {
             'msg': '创建失败！'
         }
@@ -119,7 +120,7 @@ def level_manage_data_del(request):
 
             for item in json.loads(original_id):
                 models.DBA_manager.objects.filter(original_id=item['original_id']).update(is_delete=0,del_by=del_by)
-                # print('删除成功')
+                print('删除成功')
 
             data = {
                 'msg': '批量删除成功！'
@@ -127,7 +128,7 @@ def level_manage_data_del(request):
             return JsonResponse(data)
 
     except Exception:
-        # print(Exception)
+        print(Exception)
         data = {
             'msg': '批量删除失败！'
         }

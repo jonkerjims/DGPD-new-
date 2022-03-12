@@ -21,7 +21,7 @@ def self_center_update(request):
         username = request.GET.get('username')
         age = request.GET.get('age')
         password = request.GET.get('password')
-        # print(password,type(password))
+        print(password,type(password))
         try:
             query_set = models.DBA_manager.objects.filter(email=userId)
             hash_pwd = hashlib.new('md5', query_set[0].password.encode('utf-8')).hexdigest()
@@ -30,7 +30,7 @@ def self_center_update(request):
             query_set.update(name=username, age=age, password=password)
 
             request.session['username'] = username
-            # print(request.session['username'])
+            print(request.session['username'])
             request.session['age'] = age
             data = {
                 'username': username,
@@ -38,7 +38,7 @@ def self_center_update(request):
             }
             return JsonResponse(data)
         except Exception:
-            # print(Exception)
+            print(Exception)
             data = {
                 'username': username,
                 'msg': '修改失败！'

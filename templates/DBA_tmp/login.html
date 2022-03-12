@@ -4,11 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/static/css/DBA_CSS/DBA.css">
+    <link rel="stylesheet" href="/static/layui-v2.6.8/layui/css/layui.css">
     <title>登录</title>
 </head>
 <body>
-    <div class="login">
 
+<div id="bg1" class="bgbox"></div>
+<div id="bg2" class="bgbox"></div>
+
+<div class="login">
+    <span style="font-size: 15px;font-weight: 600;color: wheat">dbWorm后台管理系统</span>
+    <div style="width: 100%;height: 250px;margin-top: 10px">
+        <div style="width: 500px;height: 50px;text-align: center;margin-left: -10px;font-family: 'Microsoft YaHei'">
+            <span style="line-height: 50px;font-size: 30px;font-weight: 600;color: white">欢&nbsp;迎&nbsp;登&nbsp;录</span>
+        </div>
+
+        <form class="layui-form layui-form-pane" action="../login/" style="padding: 0 40px;margin-top: 15px" method="post" onsubmit="check()">
+            <span style='color: #f3ba2a;height: 20px;display: block'> {{ errormsg }} <p id="error_p"></p></span>
+            <div class="layui-form-item">
+                <label class="layui-form-label"
+                       style="background-color: #009688;border-color: #009688;color: white;font-size: 15px">管理员：</label>
+                <div class="layui-input-block">
+                    <input id="userId" type="text" name="userId" lay-verify="required" placeholder="请输入邮箱" autocomplete="on"
+                           class="layui-input" value="{{ userId }}">
+                </div>
+            </div>
+            <div id="code_input" class="layui-form-item ">
+                <label class="layui-form-label"
+                       style="background-color: #009688;border-color: #009688;color: white;font-size: 15px">验证码：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="code" lay-verify="required" placeholder="请输入验证码" autocomplete="off"
+                           class="layui-input">
+                </div>
+                <input id="code" class="layui-btn layui-btn-primary layui-border-orange" style="width: 110px" type="button" value="获取验证码">
+            </div>
+            <div id="password_input" class="layui-form-item " >
+                <label class="layui-form-label"
+                       style="background-color: #009688;border-color: #009688;color: white;font-size: 15px">密码：</label>
+                <div class="layui-input-block">
+                    <input id="password" type="password" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="text-align: center">
+                <button class="layui-btn layui-btn-lg" style="width: 180px;margin-top: 15px">登录</button>
+            </div>
+
+            <div class="switch_login">
+                <a id="switch_login" href="#" style="margin-right: 0px">验证码登录/注册</a>
+            </div>
+
+        </form>
     </div>
+</div>
 </body>
+<script src="/static/js/jquery-1.9.1.min.js"></script>
+<script src="/static/layui-v2.6.8/layui/layui.js"></script>
+<script src="/static/js/md5.js"></script>
+<script>
+
+
+    //失去焦点
+    /*$("#password").blur(function() {
+        var curValue = $("#password").val();
+         alert(curValue);
+    });*/
+    // 表单提交前触发函数
+    function check(){
+
+        var pd = $('#password').val()
+        if (pd != ''){
+            $('#password').val(md5(pd))
+        }
+
+    }
+
+    //输入框正在输入时
+    $("#userId").on('input',function(){
+        console.log($('#userId').val())
+    });
+
+    function start() {
+        document.getElementById("code").disabled = true;
+        document.getElementById("code").value = 10;
+        window.setTimeout("tick()", 1000);
+    }
+
+    function tick() {
+        var time = new Number(document.getElementById("code").value);
+        if (time > 0) {
+            document.getElementById("code").value = time - 1;
+            window.setTimeout("tick()", 1000);
+        } else {
+            document.getElementById("code").disabled = false;
+            document.getElementById("code").value = "获取验证码";
+        }
+    }
+
+    $('#code').click(function () {
+        start();
+
+        $.ajax({
+            type: 'get',
+            data:{'userId':$('#userId').val()},
+            url: '../acquire_code/',
+            success: function (data) {
+                {#layer.alert(data['code'])#}
+
+                if (data['msg'] == 0){
+                    layer.alert('请核对邮箱后再试吧~')
+                }
+                else {
+                    layer.alert('验证码已发至您的邮箱~')
+                }
+            }
+        });
+    });
+
+    $('#switch_login').click(function () {
+        if($('#switch_login').html() == '验证码登录/注册'){
+            $('#password_input').hide();
+            $('#code_input').fadeIn("slow");
+            $('#switch_login').html('密码登录')
+        }
+        else {
+            $('#password_input').fadeIn("slow");
+            $('#code_input').hide();
+            $('#switch_login').html('验证码登录/注册')
+        }
+    });
+
+    window.onload = function () {
+        $('#code_input').hide();
+    }
+</script>
 </html>
