@@ -12,15 +12,11 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(os.path.join(SYS_BASE_DIR, r'DBA'))
 sys.path.append(os.path.join(BASE_DIR, r'iLearn-master'))
 
-# sys.path.append(r'C:\Users\Shi Haoyuan\Desktop\deeplearn\deeplearn\iLearn-master')
 
-# print(os.path.exists(r'C:\Users\Shi Haoyuan\Desktop\deeplearn\iLearn-master'))
-# os.path.exists(r'C:\Users\80934\Desktop\iLearnResultCSVFile\input_file\protein_sequences.txt')
-# print(os.path.abspath(__file__))
 from iLearn_protein_basic import *
 from .GraphConstruction import *
 from .model_GCN import *
-from GlobeUtils import send_email
+from DBA.GlobeUtils import send_email
 
 
 def pro_entry(email, name, File_path, q: queue.Queue):
