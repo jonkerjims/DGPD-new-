@@ -133,7 +133,7 @@ def submit(request):
             'verify_res': verify_res,
             'queue_size': q.qsize()
         }
-        time.sleep(0)
+        # time.sleep(3)
 
         return JsonResponse(data=data)
 

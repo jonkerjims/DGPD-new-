@@ -27,7 +27,7 @@ np.random.seed(1234)
 
 # ======================================
 def load_data(directory):
-    IP = pd.read_csv(os.path.join(directory,r'feature_all.csv'))
+    IP = pd.read_csv(os.path.join(directory,'feature_all.csv'))
     IP = pd.DataFrame(IP).reset_index()
     IP.rename(columns={'index': 'id'}, inplace=True)
     IP['id'] = IP['id'] + 1
@@ -36,7 +36,7 @@ def load_data(directory):
 
 
 def sample(directory, random_seed):
-    all_associations = pd.read_csv(os.path.join(directory,r'label_all.csv'))  # 加一行三列的名称，pd.read_csv读取csv时默认第一行作为header读取
+    all_associations = pd.read_csv(os.path.join(directory,'label_all.csv'))  # 加一行三列的名称，pd.read_csv读取csv时默认第一行作为header读取
     known_associations = all_associations.loc[all_associations['label'] == 1]
     unknown_associations = all_associations.loc[all_associations['label'] == 0]
     random_negative = unknown_associations.sample(n=known_associations.shape[0], random_state=random_seed, axis=0)
@@ -54,7 +54,7 @@ def obtain_data(directory, isbalance):
     # isbalance = False 执行else后的程序
 
     if isbalance:
-        dtp = pd.read_csv(os.path.join(directory,r'label_all.csv'))  # [ 1952 rows x 3 columns]
+        dtp = pd.read_csv(os.path.join(directory,'label_all.csv'))  # [ 1952 rows x 3 columns]
     else:
         dtp = sample(directory)  # [10860 rows x 3 columns]
         # 保存成csv文件查看所有数据
@@ -74,7 +74,7 @@ def obtain_data(directory, isbalance):
 
     X = np.array(knn_x)
     # print(X.shape)
-    pd.DataFrame(X).to_csv(os.path.join(BASE_DIR,r"Predict\deeplearn\dataSet\knn_x_all.csv"), index=None, encoding='utf-8')
+    pd.DataFrame(X).to_csv(os.path.join(BASE_DIR,'Predict','deeplearn','dataSet','knn_x_all.csv'), index=None, encoding='utf-8')
 
     # ========================================
 
@@ -94,23 +94,51 @@ def generate_task_Tp_train_test_idx(knn_x, dtp):
     train_index_all, test_index_all, n = [], [], 0
     train_id_all, test_id_all = [], []
     fold = 0
+    train_id = []
+    train_index = []
+    test_id = []
+    test_index = []
+    for i in range(1, 1953):
+        lt = []
+        lt.append(i+1)
+        train_index.append(i)
+        train_id.append(lt)
+        # train_id_all.append(np.array(dtp.iloc[i][['ID']]))
+        # print(train_id_all)
+    for j in range(1953, 1953+num):
+        lt = []
+        lt.append(j+1)
+        test_index.append(j)
+        test_id.append(lt)
+        # test_id_all.append(np.array(dtp.iloc[j][['ID']]))
+        # print(test_id)
+    train_index_all.append(np.array(train_index))
+    train_id_all.append(np.array(train_id, dtype=int))
+    test_index_all.append(np.array(test_index))
+    test_id_all.append(np.array(test_id, dtype=int))
+    # print('============train_id_all\n', train_id_all)
+    # print('============train_index_all\n', train_index_all)
+    # print('============test_index_all\n', test_index_all)
 
-    for train_idx, test_idx in tqdm(kf.split(knn_x)):  # train_index与test_index为下标
-        # print('-------Fold ', fold)
-        # print('============================\n', train_idx)
-        # print(test_idx)
-        train_index_all.append(train_idx)
-        test_index_all.append(test_idx)
-
-        train_id_all.append(np.array(dtp.iloc[train_idx][['ID']]))
-        test_id_all.append(np.array(dtp.iloc[test_idx][['ID']]))
-
-        # print('# Pairs: Train = {} | Test = {}'.format(len(train_idx), len(test_idx)))
-        # print(train_index_all)
-
-        fold += 1
-
-        return train_index_all, test_index_all, train_id_all, test_id_all
+    return train_index_all, test_index_all, train_id_all, test_id_all
+    # for train_idx, test_idx in tqdm(kf.split(knn_x)):  # train_index与test_index为下标
+    #     # print('-------Fold ', fold)
+    #     # print('============================\n', train_idx)
+    #     # print(test_idx)
+    #     train_index_all.append(train_idx)
+    #     test_index_all.append(test_idx)
+    #
+    #     train_id_all.append(np.array(dtp.iloc[train_idx][['ID']]))
+    #     test_id_all.append(np.array(dtp.iloc[test_idx][['ID']]))
+    #
+    #     # print('# Pairs: Train = {} | Test = {}'.format(len(train_idx), len(test_idx)))
+    #     # print(train_index_all)
+    #
+    #
+    #
+    #     fold += 1
+    #
+    #     return train_index_all, test_index_all, train_id_all, test_id_all
 
 
 
@@ -133,7 +161,7 @@ def generate_knn_graph_save(knn_x, label, n_neigh, train_index_all, test_index_a
 
         knn_y = deepcopy(label)  # 深层复制数据 label 0 或 1 的标签
         # print(knn_y)
-        knn_y[test_idx] = 0  # 把测试集标签设为0
+        # knn_y[test_idx] = 0  # 把测试集标签设为0
         # print(knn_y)
         # print('Label: ', Counter(label))  # 标签 为1 或0（5430,5430）
         # print('knn_y: ', Counter(knn_y))  # 测试集标签设为0 后的总数据（）
@@ -182,10 +210,12 @@ def generate_knn_graph_save(knn_x, label, n_neigh, train_index_all, test_index_a
     return knn_x, knn_y, knn, knn_neighbors_graph
 
 
-def construct():
-    pwd = os.path.join(BASE_DIR, r'Predict\deeplearn\graph')  # 图结构路径
+def construct(predict_num):
+    global num
+    num = predict_num
+    pwd = os.path.join(BASE_DIR, 'Predict','deeplearn','graph')  # 图结构路径
     # directory = "./data/"  # 数据路径
-    directory = os.path.join(BASE_DIR,r'Predict\deeplearn\iLearnResultCSVFile\output_file\feature')  # 数据路径
+    directory = os.path.join(BASE_DIR,'Predict','deeplearn','iLearnResultCSVFile','output_file','feature')  # 数据路径
 
 
     # for isbalance in [True, False]:
@@ -208,9 +238,9 @@ def construct():
 
             else:
                 balance = '__balanced'
-
+            path = os.path.join(pwd,task+balance+'__testlabel0_knn_edge_train_test_index_all.npz')
             np.savez_compressed(
-                pwd + task + balance + '__testlabel0_knn_edge_train_test_index_all.npz',
+                path,
                 train_index_all=train_index_all,
                 test_index_all=test_index_all,
                 train_id_all=train_id_all,

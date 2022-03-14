@@ -142,7 +142,8 @@ def evaluate(model, features, labels, mask):
         # print('=======================labels.cpu().detach():\n', labels.cpu().detach())
         # return metrics(labels.cpu().detach(), indices.cpu().detach(), probas.cpu().detach()[:, 1])
         # return probas.cpu.detach()[-num:, :]
-        return probas[-num:, :]
+        # return probas[-num:, :]
+        return probas
 
 def metrics(y_true, y_pred, y_prob):
     # print(y_true)
@@ -267,7 +268,9 @@ def main(g, features, labels, train_idx):
                                                                                                dur) / 1000))
         # ys_train, metrics_train = evaluate(model, features, labels, train_mask)
         # ys_test, metrics_test = evaluate(model, features, labels, test_mask)
-    probs_num = evaluate(model, features, labels, train_mask)
+    # probs_num = evaluate(model, features, labels, train_mask)
+    probs_num = evaluate(model, features, labels, test_mask)
+    print(probs_num)
     return probs_num
 
 
@@ -282,7 +285,7 @@ def run(task, isbalance, n_neigh):
     # pwd = '/home/chujunyi/4_GNN/GAEMDA-miRNA-disease/0_data/'
 
     if isbalance:
-        node_feature_label = pd.read_csv(os.path.join(BASE_DIR,r'Predict\deeplearn\dataSet\knn_x_all.csv'), index_col=0)
+        node_feature_label = pd.read_csv(os.path.join(BASE_DIR,'Predict','deeplearn','dataSet','knn_x_all.csv'), index_col=0)
         # node_feature_label = pd.read_csv('E:/实验室/Pro/TPC(400维)/data/knn_x_all.csv', index_col=0)
 
     # else:
@@ -293,7 +296,7 @@ def run(task, isbalance, n_neigh):
 
     # train_test_id_idx = np.load("E:/1/1/Tp__nobalance__testlabel0_knn_edge_train_test_index_all.npz",
     #                             allow_pickle=True)
-    train_test_id_idx = np.load(os.path.join(BASE_DIR,r"Predict\deeplearn\graph\Tp__imbalanced__testlabel0_knn_edge_train_test_index_all.npz"),
+    train_test_id_idx = np.load(os.path.join(BASE_DIR,'Predict','deeplearn','graph','Tp__imbalanced__testlabel0_knn_edge_train_test_index_all.npz'),
                                 allow_pickle=True)
 
     # print(train_test_id_idx)    ['train_index_all', 'test_index_all', 'train_id_all', 'test_id_all']
@@ -314,7 +317,7 @@ def run(task, isbalance, n_neigh):
 
         # knn_graph_file = 'task_' + task + balance + '__testlabel0_knn' + str(n_neigh) + 'neighbors_edge__fold' + str(fold) + '.npz'
         # pwd = "E:/1/1/"
-        pwd = os.path.join(BASE_DIR,r"Predict\deeplearn\graph")
+        pwd = os.path.join(BASE_DIR,'Predict','deeplearn','graph')
         knn_graph_file = "task_Tp__imbalanced__testlabel0_knn7neighbors_edge__fold" + str(fold) + '.npz'
         knn_neighbors_graph = sp.load_npz(pwd + knn_graph_file)  # 图，邻接矩阵
         # print('====================================')
@@ -342,9 +345,7 @@ def run(task, isbalance, n_neigh):
 
 # task = "Tp"
 # n_neigh = 5
-def convolution(predict_num):
-    global num
-    num = predict_num
+def convolution():
     for task in ['Tp']:
         for n_neigh in [5]:
             isbalance = "True"
