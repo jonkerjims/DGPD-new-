@@ -8,6 +8,13 @@ body {
 	background-size: cover;
 }
 
+#banner2 {
+	background: url(../../img/header2.png) no-repeat;
+	height: 251px;
+
+	background-size: cover;
+}
+
 #bar {
 	/*background-color: #01AAED;
 				height: 30px;*/
