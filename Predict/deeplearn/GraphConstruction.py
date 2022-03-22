@@ -98,14 +98,14 @@ def generate_task_Tp_train_test_idx(knn_x, dtp):
     train_index = []
     test_id = []
     test_index = []
-    for i in range(1, 1953):
+    for i in range(1, 1935):
         lt = []
         lt.append(i+1)
         train_index.append(i)
         train_id.append(lt)
         # train_id_all.append(np.array(dtp.iloc[i][['ID']]))
         # print(train_id_all)
-    for j in range(1953, 1953+num):
+    for j in range(1935, 1935+num):
         lt = []
         lt.append(j+1)
         test_index.append(j)
@@ -247,7 +247,7 @@ def construct(predict_num):
                 test_id_all=test_id_all)
 
             # for n_neigh in [1, 3, 5, 7, 10, 15]:
-            for n_neigh in [7]:
+            for n_neigh in [3]:
 
                 # print('--------------------------n_neighbors = ', n_neigh)
                 knn_x, knn_y, knn, knn_neighbors_graph = generate_knn_graph_save(knn_x, label, n_neigh, train_index_all,

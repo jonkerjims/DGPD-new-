@@ -225,8 +225,8 @@ def main(g, features, labels, train_idx):
 
     # create GCN model
     n_hidden = 256  # 64 256 32
-    n_layers = 3  # (2) 4 5
-    dropout = 0.1  # 0.1-0.7
+    n_layers = 2  # (2) 4 5
+    dropout = 0.7  # 0.1-0.7
     model = GCN(g,
                 in_feats,
                 n_hidden,
@@ -241,12 +241,12 @@ def main(g, features, labels, train_idx):
 
     # use optimizer
     optimizer = torch.optim.Adam(model.parameters(),
-                                 lr=1e-4,
+                                 lr=0.001,
                                  weight_decay=5e-4)
 
     # initialize graph
     dur = []
-    n_epochs = 600
+    n_epochs = 1000
     for epoch in range(n_epochs):
         model.train()
 
@@ -318,7 +318,7 @@ def run(task, isbalance, n_neigh):
         # knn_graph_file = 'task_' + task + balance + '__testlabel0_knn' + str(n_neigh) + 'neighbors_edge__fold' + str(fold) + '.npz'
         # pwd = "E:/1/1/"
         pwd = os.path.join(BASE_DIR,'Predict','deeplearn','graph')
-        knn_graph_file = "task_Tp__imbalanced__testlabel0_knn7neighbors_edge__fold" + str(fold) + '.npz'
+        knn_graph_file = "task_Tp__imbalanced__testlabel0_knn3neighbors_edge__fold" + str(fold) + '.npz'
         knn_neighbors_graph = sp.load_npz(pwd + knn_graph_file)  # 图，邻接矩阵
         # print('====================================')
         # print(knn_neighbors_graph.shape)
