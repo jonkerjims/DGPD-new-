@@ -18,8 +18,8 @@ def index(request):
 
 def txt_upDownload(request):
     """（100服务器正确）（200服务器错误）"""
-    state = 100
-    verify_res = '我们会将处理完的结果发送至您的邮箱！'
+    state = 200
+    verify_res = 'Server Error.'
 
     if request.method == "POST":
         file = request.FILES.get('file')
@@ -49,8 +49,7 @@ def txt_upDownload(request):
                 verify_res, state = verification(file_path)  # verify_res文件验证结果
             except BaseException as err:
                 # print(err)
-                verify_res = '服务器错误'
-                state = 200
+                pass
 
         data = {
             'state': state,
@@ -75,9 +74,10 @@ def submit(request):
             // 200 数据label存在问题
             // 300 蛋白序列存在问题
             // 400 线程已满
+            // 500 服务器错误
     """
+    verify_res = 'We will send the result of processing to your email.'
     state = 100
-    verify_res = '我们会将处理完的结果发送至您的邮箱！'
 
     if request.method == 'GET':
         email = request.GET.get('email')
@@ -105,8 +105,7 @@ def submit(request):
                 File_path = file_path
             except BaseException as err:
                 # print(err)
-                verify_res = '服务器错误'
-                state = 200
+                pass
         else:
             dir = os.path.join(os.path.join(BASE_DIR, 'static'), 'userUpload')
             File_path = os.path.join(dir, filename)
@@ -119,14 +118,14 @@ def submit(request):
                 4、发邮件
         """
         if state == 100:
-            if q.qsize()<3:
+            if q.qsize()<10:
                 item = [email,name,File_path]
                 q.put(item)
                 t = threading.Thread(target=start.pro_entry,args=(email,name,File_path,q),name='deeplearn')
                 # t = threading.Thread(target=deeplearn,args=(email,name,File_path,q),name='deeplearn')
                 t.start()
             else:
-                verify_res ,state = '当前线程已满，请稍后再试！', 400
+                verify_res ,state = 'The current number of submissions has reached the limit, please try again later!', 400
 
         data = {
             'state': state,
@@ -140,7 +139,7 @@ def submit(request):
 
 # 文件格式验证
 def verification(file_path):
-    verify_res, state = '我们会将处理完的结果发送至您的邮箱！', 100
+    verify_res, state = 'We will send the result of processing to your email.', 100
 
     with open(file_path, 'r',encoding='utf-8') as f:
         records = f.read()

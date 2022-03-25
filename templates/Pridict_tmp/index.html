@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Predict</title>
-<!--    <link rel="stylesheet" href="/static/layui-v2.6.8/layui/css/layui.css">-->
+    <!--    <link rel="stylesheet" href="/static/layui-v2.6.8/layui/css/layui.css">-->
     <link rel="stylesheet" href="/static/layui/css/layui.css">
     <link rel="stylesheet" href="/static/css/DB_CSS/home.css"/>
     <link rel="icon" href="/static/favicon.ico" type="image/gif">
@@ -50,24 +50,24 @@
                 <div class="layui-bg-gray layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
                      style="padding: 30px;">
                     <div class="layui-row layui-col-space15">
-                        <div class="layui-col-md6">
+                        <div class="layui-col-md12">
                             <div class="layui-card">
-                                <div class="layui-card-header">卡片面板</div>
-                                <div class="layui-card-body">
-                                    卡片式面板面板通常用于非白色背景色的主体内<br>
-                                    从而映衬出边框投影
+                                <div class="layui-card-body" style="text-align: justify;text-justify: inter-ideograph;color: #000">
+                                    <p>Dense granule proteins (GRAs) are a category of immunocompetent protein secreted by
+                                    Apicomplexa protozoa, which have diverse functions secreted by different protozoa.
+                                    Many studies have proved that GRAs play a crucial role in causing neuromuscular
+                                    dysfunction in cattle, dogs, etc. and reproductive disorders in pregnant animals.
+                                    Therefore, the identification of GRAs is significant for the study on prevention and
+                                    treatment of parasitic diseases.</p>
+                                    <p>Considering that biological experiment approach is time-consuming and
+                                    labor-intensive, computational method is a superior choice. To our knowledge, this
+                                    is the first attempt to utilize computational approach for GRAs prediction task. In
+                                    this work, we implemented the graph convolution operation to accomplish the
+                                    prediction work.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="layui-col-md6">
-                            <div class="layui-card">
-                                <div class="layui-card-header">卡片面板</div>
-                                <div class="layui-card-body">
-                                    结合 layui 的栅格系统<br>
-                                    轻松实现响应式布局
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -106,8 +106,10 @@
                         </div>
                         <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                             <div class="layui-panel">
-                                <div id="modal" class="layui-hide" style="z-index: 1000;background:rgba(255,255,255,0.1);height: 100%;width: 100%;position: absolute;text-align: center;">
-                                    <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop" style="margin-top: 260px;font-size:50px;position: relative;">&#xe63d;</i>
+                                <div id="modal" class="layui-hide"
+                                     style="z-index: 1000;background:rgba(255,255,255,0.1);height: 100%;width: 100%;position: absolute;text-align: center;">
+                                    <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"
+                                       style="margin-top: 260px;font-size:50px;position: relative;">&#xe63d;</i>
                                 </div>
                                 <div style="padding: 30px 20px;overflow: hidden">
                                     <div style="background-color: white;height: 500px;width: auto;padding: 25px 25px 25px 0;">
@@ -119,7 +121,7 @@
                                                 <label class="layui-form-label">E-mail:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="email" required lay-verify="required"
-                                                           placeholder="请输入标题" autocomplete="off" class="layui-input">
+                                                           placeholder="email" autocomplete="on" class="layui-input" />
                                                 </div>
                                             </div>
 
@@ -127,7 +129,7 @@
                                                 <label class="layui-form-label">Name:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="name" required lay-verify="required"
-                                                           placeholder="请输入标题" autocomplete="off" class="layui-input">
+                                                           placeholder="name" autocomplete="on" class="layui-input" />
                                                 </div>
                                             </div>
 
@@ -135,8 +137,8 @@
                                                 <label class="layui-form-label">Please paste/upload in FASTA
                                                     format</label>
                                                 <div class="layui-input-block">
-                                                    <textarea name="textarea" placeholder="请输入内容"
-                                                              class="layui-textarea" style="height: 100px"></textarea>
+                                                    <textarea name="textarea" placeholder="content" id="textarea"
+                                                              class="layui-textarea" style="height: 100px" ></textarea>
                                                 </div>
                                             </div>
 
@@ -144,7 +146,7 @@
                                                  style="width: 190px;height: 100px;margin-left: 110px;padding: 25px">
                                                 <div id="Icon">
                                                     <i class="layui-icon"></i>
-                                                    <p>点击上传，或将文件拖拽到此处</p>
+                                                    <p>Click Upload or drag the file here</p>
                                                 </div>
                                                 {#进度条#}
                                                 <div class="layui-hide layui-progress layui-progress-big"
@@ -166,9 +168,11 @@
                                             <div class="layui-form-item" style="margin-top: 25px">
                                                 <div class="layui-input-block">
                                                     <button class="layui-btn layui-col-md-offset2" lay-submit
-                                                            lay-filter="formDemo">立即提交
+                                                            lay-filter="formDemo">Submit
                                                     </button>
-                                                    <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                                    <button id="reset" type="reset" class="layui-btn layui-btn-primary" onclick="Reset()">
+                                                        Reset
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -301,22 +305,30 @@
                 success: function (data) {
                     $('#modal').addClass('layui-hide')
                     if (data.state === 100) {
-                        layer.msg(data.verify_res+'[排队中:前方还有'+ data.queue_size +'人]',{icon: 1})
-                    } else if(data.state === 200) {
-                        layer.msg(data.verify_res,{icon: 2})
-                    } else if(data.state === 300) {
-                        layer.msg(data.verify_res,{icon: 0})
-                    } else if(data.state === 400) {
-                        layer.msg(data.verify_res,{icon: 2})
+                        var number = data.queue_size-1
+                        if (number==0){
+                            layer.msg(data.verify_res,{icon: 1})
+                        }else {
+                            layer.msg(data.verify_res + "There are " + number + " more people in line ahead.",{icon: 1})
+                        }
+                    } else if (data.state === 200) {
+                        layer.msg(data.verify_res, {icon: 2})
+                    } else if (data.state === 300) {
+                        layer.msg(data.verify_res, {icon: 0})
+                    } else if (data.state === 400) {
+                        layer.msg(data.verify_res, {icon: 2})
+                    }else if (data.state === 500) {
+                        layer.msg(data.verify_res, {icon: 2})
                     }
                     // 100 数据正确
                     // 200 数据label存在问题
                     // 300 蛋白序列存在问题
                     // 400 线程已满
+                    // 500 服务器错误
                 }
                 , error: function (data) {
                     $('#modal').addClass('layui-hide')
-                    layer.msg(data.verify_res,{icon: 2})
+                    layer.msg(data.verify_res, {icon: 2})
                 }
             })
             // layer.msg(JSON.stringify(data.field));
@@ -324,10 +336,9 @@
         });
     });
 
-    $('#reset').click(function (){
+    $('#reset').click(function () {
         layui.$('#Icon').removeClass('layui-hide')
         layui.$('#uploadDemoView').addClass('layui-hide')
-        layui.$('#filename').val('')
     })
 </script>
 
@@ -342,22 +353,25 @@
             elem: '#test10'
             , accept: 'file'
             , method: 'GET'
-            , exts: 'txt|fa'
+            , exts: 'fasta|fa'
             , url: '../../GRAGCN/txt_upDownload/' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
             , done: function (res) {
                 if (res.state === 100) {
-                    layer.msg('上传成功');
+                    layer.msg('Uploaded successfully.');
                     layui.$('#filename').val(res.filename)
                     layui.$('#Icon').addClass('layui-hide')
                     layui.$('#ProcessBar').addClass('layui-hide')
                     //layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
                     layui.$('#uploadDemoView').removeClass('layui-hide').find('p').html(res.filename);
-                    console.log(res.filename)
-                } else if(res.state === 200) {
-                    layer.msg(res.verify_res,{icon: 2})
+                    // console.log(res.filename)
+                    // 文件上传成功后禁用textarea
+                    layui.$('#textarea').val('').attr({readonly: 'true'}).css('background-color', '#80808036')
+
+                } else if (res.state === 200) {
+                    layer.msg(res.verify_res, {icon: 2})
                     layui.$('#ProcessBar').addClass('layui-hide')
-                } else if(res.state === 300) {
-                    layer.msg(res.verify_res,{icon: 0})
+                } else if (res.state === 300) {
+                    layer.msg(res.verify_res, {icon: 0})
                     layui.$('#ProcessBar').addClass('layui-hide')
                 }
             }
@@ -370,6 +384,17 @@
             }
         });
     })
+    function Reset(){
+        /*
+        *  func： 先查看用户是否能输入，如过不能则将readonly属性去掉
+        * */
+        var state = layui.$('#textarea').attr('readonly')
+        if (state !== undefined){
+            layui.$('#textarea').val('').removeAttr("readonly").css('background-color','')
+        }
+        layui.$('#filename').val('')
+            // layui.$('#textarea').val('').attr({readonly: 'true'}).css('background-color', '#80808036')
+    }
 </script>
 </body>
 

@@ -27,8 +27,11 @@ from GlobeUtils import send_email
 def pro_entry(email, name, File_path, q: queue.Queue):
     try:
         t1 = time.time()
+        print(File_path)
         # h=1/0
+
         header = iLearnStart(File_path)
+
 
         # 读取生成特征
         path = os.path.join(BASE_DIR, 'Predict','deeplearn','iLearnResultCSVFile','output_file','feature')
@@ -64,31 +67,30 @@ def pro_entry(email, name, File_path, q: queue.Queue):
         print(result)
 
         ###################################【邮件内容编辑】###################################
-        resultNeirong = r'<thead style="width: 100%;"><tr><th class="text-center" style="width: 33.3%">标签</th><th class="text-center" style="width: 33.3%">不是致密颗粒蛋白概率</th><th class="text-center" style="width: 33.3%">是致密颗粒蛋白概率</th></tr></thead><tbody style="width: 100%;">'
+        resultNeirong = r'<thead style="width: 100%;"><tr><th class="text-center" style="width: 33.3%">Gene ID</th><th class="text-center" style="width: 33.3%">Score (Non-GRA)</th><th class="text-center" style="width: 33.3%">Score (GRA)</th></tr></thead><tbody style="width: 100%;">'
         for res in result:
             resultNeirong += r'<tr><td class="text-center" style="width: 33.3%">' + str(res[0]) + '</td><td class="text-center" style="width: 33.3%">' + '%0.3f' % res[1] + '</td><td class="text-center" style="width: 33.3%">' + '%0.3f' % res[2] + '</td></tr>'
         resultNeirong += r'</tbody>'
-        mail_massage = '<div style="text-align: center;"><h2>The predictions</h2><table  border="1px solid #ccc" cellspacing="0" cellpadding="0" style="text-align: center;margin:auto;">'
+        mail_massage = '<div style="text-align: center;"><h2>The list of predictions result</h2><table  border="1px solid #ccc" cellspacing="0" cellpadding="0" style="text-align: center;margin:auto;">'
         mail_massage += resultNeirong
         mail_massage += '</table></div>'
         ####################################################################################
 
-        massage = mail_massage +'<br>'+ str('耗时:%s' % (str(int(t2-t1)))) + 's'
-        subject = '蛋白质序列预测成功提醒'
+        massage = mail_massage +'<br>'+ str('Predicting time：%s' % (str(int(t2-t1)))) + 's'
+        subject = 'Prediction success reminder'
 
         # 检测邮件是否发送失败
         backcall = send_email(email, massage, subject, name)
         print(backcall)
-        print('耗时：', int(t2 - t1))
+        print('Predicting time：', int(t2 - t1))
         # 取出管道的内容
         q.get()
-        # print(1/0)
 
     except BaseException as err:
         print(err)
         time.sleep(15)
-        massage = '你在DGPD提交的蛋白质序列，由于运算超时或者服务器超符合运转，导致预测失败，请联系管理员809341512@qq.com查看详情！'
-        subject = '蛋白质序列预测失败提醒'
+        massage = 'The prediction failed due to a server error. Contact the administrator.'
+        subject = 'Prediction failure warning'
         backcall = send_email(email, massage, subject, name)
         print(backcall)
         # 取出管道的内容
