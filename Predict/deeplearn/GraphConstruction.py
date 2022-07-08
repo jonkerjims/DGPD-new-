@@ -98,14 +98,14 @@ def generate_task_Tp_train_test_idx(knn_x, dtp):
     train_index = []
     test_id = []
     test_index = []
-    for i in range(1, 1935):
+    for i in range(0, 1934):
         lt = []
         lt.append(i+1)
         train_index.append(i)
         train_id.append(lt)
         # train_id_all.append(np.array(dtp.iloc[i][['ID']]))
         # print(train_id_all)
-    for j in range(1935, 1935+num):
+    for j in range(1934, 1934+num):
         lt = []
         lt.append(j+1)
         test_index.append(j)
@@ -158,7 +158,7 @@ def generate_knn_graph_save(knn_x, label, n_neigh, train_index_all, test_index_a
     fold = 0
     for train_idx, test_idx in zip(train_index_all, test_index_all):
         # print('-------Fold ', fold)
-
+        # print(test_idx)
         knn_y = deepcopy(label)  # 深层复制数据 label 0 或 1 的标签
         # print(knn_y)
         # knn_y[test_idx] = 0  # 把测试集标签设为0
@@ -215,8 +215,8 @@ def construct(predict_num):
     num = predict_num
     pwd = os.path.join(BASE_DIR, 'Predict','deeplearn','graph')  # 图结构路径
     # directory = "./data/"  # 数据路径
-    directory = os.path.join(BASE_DIR,'Predict','deeplearn','iLearnResultCSVFile','output_file','feature')  # 数据路径
-
+    directory = os.path.join(BASE_DIR,'Predict','deeplearn','iLearnResultCSVFile','output_file','feature')
+    directory = directory.replace('\\','/')# 数据路径
 
     # for isbalance in [True, False]:
     # for isbalance in [False, True]:  # 只保留False，只跑平衡数据

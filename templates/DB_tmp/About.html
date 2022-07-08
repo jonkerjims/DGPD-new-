@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/static/layui/css/layui.css">
 		<link rel="stylesheet" href="/static/css/DB_CSS/global.css" />
 		<link rel="stylesheet" href="/static/css/DB_CSS/home.css" />
-		<link rel="icon" href="/static/favicon.ico" type="image/gif">
+
 <style>
 
 hr{
@@ -110,14 +110,11 @@ blockquote{
 						</blockquote>
 
 						<div class="layui-text" style="margin-bottom:7px;text-align: justify;text-justify:inter-ideograph;">
-                            Dense granular protein is secreted by the specific secretory organelle—dense granules of the Apicomplexans, which forms a large phylum of parasitic protozoa. It mainly modifies the parasitophorous vacuole (PV) and PV membrane in order to the maintenance of intracellular parasitism in almost all nucleated host cells.To explore and identify more new dense granular proteins and analyze their functions will be an important way to reveal the infection and pathogenicity mechanism of Apicomplexans.
-                        </div>
+                            Dense granule proteins(GRAs) are secreted by the specific secretory organelle--dense granule of the Apicomplexans. Most of the GRAs locate within the parasitophorous vacuole (PV) where the parasite multiplies and maintain intracellular parasitism of nearly all nucleated host cells mainly by modifying the PV at the interface between the host cell and the parasite. The functions of these GRAs with different localization are also diverse, include participating in the formation of tubular membranes, regulating signaling pathways in host cells and affecting the transport of substances in the vacuolar membrane. To Integrate existing GRAs and analyze their functions are an necessary  way for identifying novel GRAs. This work will help researchers to reveal the infection and pathogenicity mechanism of Apicomplexans.                         </div>
 						<div class="layui-text" style="margin-bottom:7px;text-align: justify;text-justify:inter-ideograph;margin-bottom:7px;text-indent: 1em;">
-                            Nearly every vertebrate and invertebrates can be the host of at least one apicomplexan species , such as T.gondii infection is related to reproductive failure of sows caused by abortion, fetal mummification, stillbirth and neonatal death in animal husbandry.Toxoplasmosis is one of the most important diseases that causing abortion of different female animals and it has great influence on animal husbandry and often leads to low productivity and economic loss.
-						</div>
+                            Nearly all creatures can be the host of the apicomplexan species.In particular, Plasmodium falciparum and Toxoplasma gondii are the causative agents of two important human diseases: Malaria and toxoplasmosis, respectively. Neospora caninum causes neosporosis, one of the main causes of infectious abortion in cattle worldwide. Thus, apicomplexan parasites have a great influence on human health and animal husbandry, resulting in the low productivity and economic loss.			</div>
 						<div class="layui-text" style="margin-bottom:7px;text-align: justify;text-justify:inter-ideograph;margin-bottom:7px;text-indent: 1em;">
-                            Over the past 20 years, our understanding of the mechanisms of apical pathogenicity and virulence at the level of molecular structure as seen at atomic resolution has expanded dramatically.Unfortunately, this vast amount of knowledge has so far only concerned plasmodium and Toxoplasmosis.
-						</div>
+                            Over the past 20 years, our understanding of the exact biological mechanisms  of GRAs has expanded dramatically. Unfortunately, this vast amount of knowledge has so far only concerned plasmodium and Toxoplasmosis. Although nine GRA proteins have been previously identified in N. caninum, including NcGRA1, NcGRA2, NcGRA6, etc. the exact biological function of these proteins is not fully understood. By the development of modern technologies, many studies reported that GRAs has potential applications in different aspects of functions. But little has been done to help the researchers in the research field of GRAs, thus we integrate rich GRAs data to develop a dedicated database, Dense Granule Protein Database (DGPD). 	 						</div>
 
 
 
@@ -158,18 +155,18 @@ blockquote{
 								<tbody>
 								<tr>
 									<td>Level 1</td>
-									<td>Approved</td>
-									<td>Items associated with FDA-approved and international guidelines.</td>
+									<td>Confirmed</td>
+									<td>The GRAs which has experimentally validated.</td>
 								</tr>
 								<tr>
 									<td>Level 2</td>
-									<td>Clinical</td>
-									<td>Items associated with clinical trials such as Phase I, Phase II, Phase III, clinical study and so on.</td>
+									<td>Likely</td>
+									<td>The highly suspected GRAs from main text or attachment of the articles.</td>
 								</tr>
 								<tr style="border-bottom:1px solid;">
 									<td>Level 3</td>
-									<td>Preclinical</td>
-									<td>Items associated with in preclinical experiments such as preclinical-cell culture, preclinical-PDX, preclinical-cell line xenograft and so on.</td>
+									<td>Predicted</td>
+									<td>The homologous proteins of known dense granule proteins</td>
 								</tr>
 
 								</tbody>
@@ -182,9 +179,9 @@ blockquote{
 						</blockquote>
 						<div class="layui-text">
 							<ul>
-								<li>Users can use keywords, genes and cDNA data.</li>
-								<li>Users can easily apply the search function that supports fuzzy queries to obtain content of interest in the field of cancer research.</li>
-								<li>The database monitoring system provides direct visualization of protein domain locations.</li>
+								<li>Users can use keywords, genes and species data.</li>
+								<li>Users can easily apply the search function that supports fuzzy queries to obtain content of interest in the field of the GRAs.</li>
+								<li>The database monitoring system provides direct visualization of gene metadatas.</li>
 								<li>Users can download standardized data from the database for free.</li>
 								<li>Users can extend the database by submitting new data to us.</li>
 							</ul>
@@ -202,17 +199,17 @@ blockquote{
 						</div>
 						<div class="layui-text">
 							<ul>
-								<li>Gene: Official genetic symbol</li>
-								<li>Disease: Term for disease in the ontology of disease</li>
-								<li>Disease ontology identifier</li>
-								<li>Types: missense, FS-indel, repetition, complex-indel (simultaneous insertion and deletion)</li>
+								<li>Gene name: Gene accession number</li>
+								<li>Evidence Level: Evaluation criteria for classifying data by source</li>
+								<li>PMID: The index number used for literature search</li>
+								<li>species: Toxoplasma, Neospora, Hammondia hammondi, Cystoisospora suis, Plasmodium falciparum</li>
 							</ul>
 						</div>
 						<br/>
 						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
 						<div class="layui-text" id="Browse">
 							<h3>1. Browse</h3>
-							You can select one or more of the options listed in the browse area (Organism and Gene).
+							You can select one or more of the options listed in the browse area (species and Gene name).
                         </div>
 						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12 imgtext">
 							<br>
@@ -269,24 +266,16 @@ blockquote{
 
 								<thead>
 									<tr style="border-top:1px solid;border-bottom:1px solid;">
-										<td>Gene</td>
-										<td>Mutation</td>
-										<td>Disease</td>
-										<td>Reference</td>
-										<td>Drug</td>
-										<td>Sensitivity Entry</td>
-										<td>Resistance Entry</td>
+										<td>leve 1</td>
+										<td>leve 2</td>
+										<td>level 3</td>
 									</tr>
 								</thead>
 								<tbody>
 									<tr  style="border-bottom:1px solid;">
-										<td>146</td>
-										<td>1271</td>
-										<td>185</td>
-										<td>1306</td>
-										<td>486</td>
-										<td>3151</td>
-										<td>1276</td>
+										<td>110</td>
+										<td>37</td>
+										<td>98</td>
 									</tr>
 								</tbody>
 							</table>
@@ -296,47 +285,43 @@ blockquote{
 
 								<thead>
 									<tr style="border-top:1px solid;border-bottom:1px solid;">
-										<td>Type</td>
-										<td>Number</td>
-										<td>Type</td>
-										<td>Number</td>
+										<td>Species</td>
+										<td>Level 1</td>
+										<td>Level 2</td>
+										<td>Level 3</td>
+										<td>Total</td>>
 									</tr>
 								</thead>
 								<tbody>
-									<tr><td>Missencse</td>
-										<td>978</td>
-										<td>Copy number gain</td>
-										<td>46</td>
+									<tr><td>Toxoplasma</td>
+										<td>66</td>
+										<td>26</td>
+										<td>80</td>
+										<td>172</td>>
 									</tr>
-									<tr><td>IF-deletion</td>
-										<td>61</td>
-										<td>Copy number loss</td>
-										<td>1</td>
+									<tr><td>Hammondia hammondi</td>
+										<td>11</td>
+										<td>0</td>
+										<td>18</td>
+										<td>29</td>
 									</tr>
-									<tr><td>IF-insertion</td>
-										<td>35</td>
-										<td>Nonsense</td>
-										<td>31</td>
+									<tr><td>Plasmodium falciparum</td>
+										<td>8</td>
+										<td>11</td>
+										<td>0</td>
+										<td>19</td>
 									</tr>
-									<tr><td>FS-deletion</td>
-										<td>6</td>
-										<td>Synonymous</td>
+									<tr><td>Neospora</td>
+										<td>16</td>
+										<td>0</td>
+										<td>0</td>
 										<td>16</td>
 									</tr>
-									<tr><td>FS-insertion</td>
-										<td>7</td>
-										<td>Noncoding</td>
-										<td>4</td>
-									</tr>
-									<tr><td>Duplication</td>
-										<td>19</td>
-										<td>Other</td>
-										<td>27</td>
-									</tr>
-									<tr style="border-bottom:1px solid;"><td>Complex-indel</td>
-										<td>40</td>
-										<td>Total</td>
-										<td>1271</td>
+									<tr style="border-bottom:1px solid;"><td>Cystoisospora suis</td>
+										<td>9</td>
+										<td>0</td>
+										<td>0</td>
+										<td>9</td>
 									</tr>
 								</tbody>
 							</table>
@@ -357,7 +342,7 @@ blockquote{
 
 			<div class="copyright">
 				Copyright©
-				<a class="ow" href="https://www.ahau.edu.cn/" target="_blank">AnHui Argricultural University</a> ©All Rights Reserved.
+				<a class="ow" href="http://eng.ahau.edu.cn/" target="_blank">Anhui Argricultural University</a> ©All Rights Reserved.
 			</div>
 			<div class="use">
 				<!-- Website content is for educational and research purposes only and is not intended to be used for medical advice, diagnosis or treatment. -->

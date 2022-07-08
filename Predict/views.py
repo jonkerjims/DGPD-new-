@@ -118,6 +118,7 @@ def submit(request):
                 4、发邮件
         """
         if state == 100:
+
             if q.qsize()<10:
                 item = [email,name,File_path]
                 q.put(item)
@@ -139,43 +140,51 @@ def submit(request):
 
 # 文件格式验证
 def verification(file_path):
-    verify_res, state = 'We will send the result of processing to your email.', 100
+    verify_res, state = 'We will send the prediction result to your email. ', 100
 
     with open(file_path, 'r',encoding='utf-8') as f:
         records = f.read()
         # print(1)
         # 检测文件大小，以及是否存在label
         count = len(open(file_path, 'r',encoding='utf-8').readlines())
-        if count > 10000:
-            verify_res, state = 'The file is too large. Please upload it again.', 200
+        if count > 200:
+            verify_res, state = 'Only 200 rows of data are allowed to be uploaded at a time.', 200
         else:
             if re.search('>', records) == None:
-                verify_res, state = 'The input file seems not have label.(Please refer to the sample.)', 200
+                verify_res, state = 'There does not seem to be ">" at the beginning of each sequence. You can refer to the sample.', 200
             else:
                 """
                     此处必须重新打开文件，因为上一次打开的文件已经失效
                 """
                 with open(file_path, 'r',encoding='utf-8') as h:
                     for line in h:
-                        # print(line)
+                        line = line.replace('\n','')
                         if '>' in line:
-                            content_1 = line.split('>')[1]
-                            if str.count(content_1,'|') == 2:
-                                content_2 = content_1.split('|')[1]
-                                content_3 = content_1.split('|')[2]
-                                if (content_2 != '' and content_2 != None) and (content_3 != '' and content_3 != None):
-                                    pass
-                                else:
-                                    verify_res, state = 'The values before and after "|" can`t be empty.(Please refer to the sample.)', 200
+                            geneName = line.split('>')[1]
+                            if geneName:
+                                if re.findall(r'''[\*"/:?\\|<>”’\']''', geneName):
+                                    verify_res, state = 'Protein name cannot contain special symbols. (*, ",/, :,? , \ | <, > .)', 200
                                     break
                             else:
-                                verify_res, state = 'The label seems not have " | ".(Please refer to the sample.)', 200
+                                verify_res, state = 'Please fill in the correct protein ID after ">".', 200
                                 break
+                            # content_1 = line.split('>')[1]
+                            # if str.count(content_1,'|') == 2:
+                            #     content_2 = content_1.split('|')[1]
+                            #     content_3 = content_1.split('|')[2]
+                            #     if (content_2 != '' and content_2 != None) and (content_3 != '' and content_3 != None):
+                            #         pass
+                            #     else:
+                            #         verify_res, state = 'The values before and after "|" can`t be empty.(Please refer to the sample.)', 200
+                            #         break
+                            # else:
+                            #     verify_res, state = 'The label seems not have " | ".(Please refer to the sample.)', 200
+                            #     break
                         else: # 判断是否是蛋白质序列
                             line = line.replace('\n','')
                             res = re.sub('[^ACDEFGHIKLMNPQRSTVWY-]', '-', ''.join(line).upper())
                             if '-' in res:
-                                verify_res, state = 'The protein sequence seems to be wrong.(Please refer to the sample.)', 300
+                                verify_res, state = 'The protein sequence seems to be wrong. You can refer to the sample.', 300
 
     return verify_res, state
 

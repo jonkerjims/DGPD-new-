@@ -5575,7 +5575,7 @@ layui.define("layer", function(e) {
 							t++, d(e, i), u()
 						},
 						error: function() {
-							n++, o.msg("请求上传接口出现异常"), m(e), u()
+							n++, o.msg("Server error."), m(e), u()
 						}
 					})
 				})
@@ -5634,7 +5634,7 @@ layui.define("layer", function(e) {
 		if(v = 0 === v.length ? r.value.match(/[^\/\\]+\..+/g) || [] || "" : v, 0 !== v.length) {
 			switch(l.accept) {
 				case "file":
-					if(h && !RegExp("\\w\\.(" + h + ")$", "i").test(escape(v))) return o.msg("选择的文件中包含不支持的格式"), r.value = "";
+					if(h && !RegExp("\\w\\.(" + h + ")$", "i").test(escape(v))) return o.msg("Please upload the FASTA file."), r.value = "";
 					break;
 				case "video":
 					if(!RegExp("\\w\\.(" + (h || "avi|mp4|wma|rmvb|rm|flash|3gp|flv") + ")$", "i").test(escape(v))) return o.msg("选择的视频中包含不支持的格式"), r.value = "";
@@ -5814,7 +5814,7 @@ layui.define("layer", function(e) {
 										var i = this.value,
 											t = e.keyCode;
 										return 9 !== t && 13 !== t && 37 !== t && 38 !== t && 39 !== t && 40 !== t && (C(i, function(e) {
-											e ? k.find("." + r)[0] || k.append('<p class="' + r + '">无匹配项</p>') : k.find("." + r).remove()
+											e ? k.find("." + r)[0] || k.append('<p class="' + r + '">No result</p>') : k.find("." + r).remove()
 										}, "keyup"), void("" === i && k.find("." + r).remove()))
 									};
 								f && m.on("keyup", w).on("blur", function(i) {
@@ -6314,7 +6314,7 @@ layui.define(["laytpl", "laypage", "layer", "form"], function(e) {
 					c.scrollPatch()
 				}, 50), c.haveInit = !0, void l.close(c.tipsIndex))
 			};
-		return c.key = s.id || s.index, d.cache[c.key] = u, r ? m() : 0 === u.length ? (c.renderForm(), c.layFixed.remove(), c.layMain.find("tbody").html(""), c.layMain.find("." + f).remove(), c.layMain.append('<div class="' + f + '">无数据</div>')) : (m(), void(s.page && (s.page = t.extend({
+		return c.key = s.id || s.index, d.cache[c.key] = u, r ? m() : 0 === u.length ? (c.renderForm(), c.layFixed.remove(), c.layMain.find("tbody").html(""), c.layMain.find("." + f).remove(), c.layMain.append('<div class="' + f + '">Sorry, the search results were empty.</div>')) : (m(), void(s.page && (s.page = t.extend({
 			elem: "layui-table-page" + s.index,
 			count: o,
 			limit: s.limit,

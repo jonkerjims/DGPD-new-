@@ -10,9 +10,9 @@ import pandas as pd
 BASE_DIR = os.path.abspath(os.path.join(os.getcwd()))
 print(BASE_DIR)
 # InputFilePath = os.path.join(BASE_DIR, r'iLearnResultCSVFile\input_file\protein_sequences.txt')
-OutputFilePath = os.path.join(BASE_DIR, r'Predict\deeplearn\iLearnResultCSVFile\output_file\result.csv')
-protein_label_filepath = os.path.join(BASE_DIR, r'Predict\deeplearn\iLearnResultCSVFile\output_file\feature\label.csv')
-feature_filepath = os.path.join(BASE_DIR, r'Predict\deeplearn\iLearnResultCSVFile\output_file\feature\feature.csv')
+OutputFilePath = os.path.join(BASE_DIR, r'Predict','deeplearn','iLearnResultCSVFile','output_file','result.csv')
+protein_label_filepath = os.path.join(BASE_DIR, r'Predict','deeplearn','iLearnResultCSVFile','output_file','feature','label.csv')
+feature_filepath = os.path.join(BASE_DIR, r'Predict','deeplearn','iLearnResultCSVFile','output_file','feature','feature.csv')
 # print(InputFilePath)
 import argparse
 import re

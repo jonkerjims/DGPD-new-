@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Predict</title>
+    <title>GRA-GCN</title>
     <!--    <link rel="stylesheet" href="/static/layui-v2.6.8/layui/css/layui.css">-->
     <link rel="stylesheet" href="/static/layui/css/layui.css">
     <link rel="stylesheet" href="/static/css/DB_CSS/home.css"/>
@@ -30,152 +30,172 @@
                 <li class="layui-nav-item">
                     <a href="#Contact">Contact</a>
                 </li>
-                <li class="layui-nav-item ">
-                    <a href="#Download">Download</a>
-                </li>
+<!--                <li class="layui-nav-item ">-->
+<!--                    <a href="#Download">Download</a>-->
+<!--                </li>-->
             </ul>
 
         </div>
     </div>
 
     <div class="layui-row" id="bodyer">
-        <div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1"
+        <div class=" layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1"
              id="overview" style="margin-bottom:20px;margin-top:20px;">
             {# Introduction #}
-            <div style="margin-top: 20px;">
-                <fieldset class="layui-elem-field layui-field-title" id="Introduction" style="margin-top: 20px;">
-                    <legend>Introduction</legend>
-                </fieldset>
+            <div style="border: 1px solid rgba(209,240,250,0.89); height: 340px;border-radius: 5px">
+                <div style="border: 1px solid rgba(209,240,250,0.89);background-color: rgba(209,240,250,0.89);">
+                    <fieldset class="layui-elem-field layui-field-title" id="Introduction" style="margin-top: 20px;">
+                        <legend style="color:#31708f;font-size: 25px">Introduction</legend>
+                    </fieldset>
 
-                <div class="layui-bg-gray layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
-                     style="padding: 30px;">
-                    <div class="layui-row layui-col-space15">
-                        <div class="layui-col-md12">
-                            <div class="layui-card">
-                                <div class="layui-card-body" style="text-align: justify;text-justify: inter-ideograph;color: #000">
-                                    <p>Dense granule proteins (GRAs) are a category of immunocompetent protein secreted by
-                                    Apicomplexa protozoa, which have diverse functions secreted by different protozoa.
-                                    Many studies have proved that GRAs play a crucial role in causing neuromuscular
-                                    dysfunction in cattle, dogs, etc. and reproductive disorders in pregnant animals.
-                                    Therefore, the identification of GRAs is significant for the study on prevention and
-                                    treatment of parasitic diseases.</p>
-                                    <p>Considering that biological experiment approach is time-consuming and
-                                    labor-intensive, computational method is a superior choice. To our knowledge, this
-                                    is the first attempt to utilize computational approach for GRAs prediction task. In
-                                    this work, we implemented the graph convolution operation to accomplish the
-                                    prediction work.</p>
+                    <div class=" layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
+                         style="padding: 10px;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-body"
+                                         style="text-align: justify;text-justify: inter-ideograph;color: #000;border-radius: 10px;">
+                                        <p style="font-size: 18px;font-family: 'Microsoft YaHei UI'">Dense granule proteins (GRAs) are a
+                                            category of immunocompetent protein secreted by
+                                            Apicomplexa protozoa, which have diverse functions secreted by different
+                                            protozoa.
+                                            Many studies have proved that GRAs play a crucial role in causing
+                                            neuromuscular
+                                            dysfunction in cattle, dogs, etc. and reproductive disorders in pregnant
+                                            animals.
+                                            Therefore, the identification of GRAs is significant for the study on
+                                            prevention and
+                                            treatment of parasitic diseases.</p>
+                                        <p style="font-size: 18px;text-indent:23px;font-family: 'Microsoft YaHei UI';margin-top: 10px">Considering that biological
+                                            experiment approach is time-consuming and
+                                            labor-intensive, computational method is a superior choice. To our
+                                            knowledge, this
+                                            is the first attempt to utilize computational approach for GRAs prediction
+                                            task. In
+                                            this work, we implemented the graph convolution operation to accomplish the
+                                            prediction work.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
             {# Submission #}
-            <div style="display: block;margin-top: 20px">
-                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                    <legend>Submission</legend>
-                </fieldset>
-
-                <div class="layui-bg-gray" style="padding: 30px;">
-                    <div class="layui-row layui-col-space15">
-                        <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
-                            <div class="layui-panel">
-                                <div style="padding: 30px 10px;">
-                                    <div style="background-color: white;height: 500px;width: auto;padding: 25px;overflow: scroll;">
-                                        <b style="top: 0px">Example DNA sequences: <a href="#" style="color: #1E9FFF;">Download
-                                            example
-                                            file</a></b>
-                                        <div style="height: 100%;width: auto;word-wrap: break-word;word-break: normal;margin-top: 25px">
-                                            <p style="font-weight: 600">&gt;Chr12:5040629_5041621</p><br>
-                                            <p style="">
-                                                CCCAACCCAACCCAACCACCCCCATAAACCCTACGCGCGAACGAGCAGCATCCGCCGCCGACATTGCGGGGATCGGCCATCCGACCACCGGGACAAGGGAGAGGGACGGGAGCGGGGCCTCACCGGAGTCGTCGCCGGAGCCGGGAGGCCCCCCGCCGCCGCGGCGATCGCCGGCGGACGCCATCGCGGAGTGGGGTTCGCGTTGTGTGTGTTGGGGTTTTCGAGGAGAGAGAGAGAGAGAGAGAGAGAAGCCGAAGCGGACCCGCGCCTGTGGCCTTGGTTGGTTTTTTATGGAGGGGGGGGCGCCGGTAACCGCACCGGGTGGGTGGCCGCACGGAATGCTCGTTTGGTCCTCACCCGATCCACCCCGCTTACCCCGGGTAGCTGACGAGTGGGGTCCACACTGGTGGGCCCCATGTTTCAGTTAAGGTAAGTTTGGTCACCGTGGTGCATTGCGTTGCCCCCCCCCCCCCCCCCCCCCCCGCTTTTCGCCTTCCTCGTTTACGAAGGCTTTAAAGAGGAGGCGCACCTCGCGCTGTCTGGTGGGGCCCGGGAGGCTGTCAACGAGTCAACTGCGGTCAACGTGAGGAGCTGGGCCCACATGTCACTGTGAGTGATGGATGGGGACTCTTAGAGTTGGCACTTTGTCAGGGGACCTTTAAGCTTTGTCTAGTTGTTGGTGTTGAATTGAATGAAGACATGAGAAGTCTGGTTCGTGTTGCTGCTGTTTTATGAAGAATCTTTAAAAGTTGCCGAAGTACAAAGGTTTCATTATTTATGAAAGAAGCTGAATCGTGAGCAATCAATTTGTCATGACTAAGCAAGTGATTTGATTTTATCGATCTACTCCCTGTGTTTCATTTTAACTGTTTGAAAAAATTTTATAATTAGTATTTTTGTTATTACGAGATAATAAAACATGAATAGTACTTTACTTGTGGCTCAAGTTTTTAAATTTTTTCAAAAACTTTTCAAATAAGACGGATGGCCAA</p>
-                                            <br>
-                                            <p style="font-weight: 600">&gt;Chr01:41689426_41690140</p><br>
-                                            <p style="">
-                                                GCCCGGCCGCATGTTCGTCCGGTTGGCGAGCAAGCGGCACTCGGCGAGCAGGTCATTGAGCTCGTACAGACACTGCCGGAGCTCATCGTCGTTGGTGGAAGAAATGGCGGCCTTCTCCAGTTCGGCCTTGACGTCGTAGAAGTGCGCGCGGAAAGGGAGCTCCGCTGCTGCCTCCTCCTCCTCCGCAAGGCTATCCACAAACTTTCTTACAAGAAACTGGACAACTTCCACCGCCATCAATGACTCTGGCCTCTCCAACTCACTAACAAAGGAAGGAGTTTAGCCAAATCAGTAGTAGTACACGCTACACAAGTACACAATATGCAAGACTTTGAGATGGTTGCATCAGCTTTGCTACAAAGTCAGTCCACATTCAGGTCAGTTTTCTTGGCATGTTTCTCCTTTACGCGTTTTAAGCTTTCCATCGAGAAAAAAAAATGCGTTGACCGAGGGAAGACGAGATCAGTGTTTCCGAGAGGATTAGGCAATGACCGGGGAGAAGAAACGCTGGAATCGTGCTACGGGCGGCAGATTGGAAGACGAAGATGGAGGGATCCATGGCAAGCGTGGTGGCCTTGTGGAACGAGTGGGAAATCCGCGTGCTTGTGCTCTCCAGCCTCGCGCTGCAGGTGTTCCTCCTCTTTCCCGCCGTCATCCGCAAGCGCAACGTCTCCGCCGTGCTCGGCCTGCTCCTCTGGCTCGCCCACCTGCTCG</p>
-                                            <br>
-                                            <p style="font-weight: 600">&gt;Chr03:34244991_34245870</p><br>
-                                            <p style="">
-                                                ATTGAAAGCATCCAGTGATGCAACCCACTTTCGTATACCCTCTCCGTGCTAAAATATAACAACTTCTAACCCTTAAGATTTATCACAAAATATAACAACTTTCATCAACAATAATCAATTGCAATCATCCACCGTATAATTTTCTGAATTGTTTTCACTTCTCAACCAATTACAACCTTCCTCTCGTCTATCAAGCCTGTATACAGAGCTAGCAAAACTGAAGGGTAAAAAAATCGTGTCTTTTTGAATCGATGGGAGCAGGGAGAGCTTTGGTTTCGATCTTGTCATGGCTGGAAATGCATCTCGTCGAGGACGACGACGAGCGCGACGATGAAGGCGTAGTCGATGCCGGCGTTGACGGTGACGCTGTATGCGTTCTTCCCCAGCAGCGCGCTCGCCACGCTGAACCGCCGGTCGATCTGCGCGCGAAACAGTTTTTGCGTCAGGTCGAGCAGCACGCCCACCAGGTGTTCGATGAAATGACGGAAGTGGTTTGAGCAGGGGGGAGAGAGAGGGGTTGCTTTGCTTGCCTTTGCGATGACGGTGTCAGAGTCGCCGAGGGAGACGGCGCAGGCGCCGTCGTGGTAGCTGCCGGTGACGCGGAAGTCGCTGGCCTGCTCGGCGTCGTTGCTGGCGAGGAACACGCTCACCTTGGTCGAACCCCATAGCTGGATCGCCGACGGCTTCACCACGGTGAAGAGCAGGTCACGCCGGCTCGTGCTCTCCCCCCGGAACACCTTCCACCTCCTGTTCATCACCATCGCCTGCACCCACCGGAGCTCACCACCACCGATCAGATTGGCACGGTGGGGAAGAAGAGAAGAGAGTAGGGGAGGGGAGTCGAGTGTCGCGCGCACCGATTCTTGGACGGTGAGGACG</p>
-                                            <br>
+            <div style="border: 1px solid rgba(209,240,250,0.89);height: 700px;margin-top: 20px;border-radius: 5px ">
+                <div style="display: block;">
+                    <div style="border: 1px solid rgba(209,240,250,0.89);background-color: rgba(209,240,250,0.89);">
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;" id="Submission">
+                            <legend style="color:#31708f;font-size: 25px">Submission</legend>
+                        </fieldset>
+                    </div>
+                    <div style="padding: 30px;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
+                                <div class="layui-panel">
+                                    <div style="padding: 30px 10px;">
+                                        <div style="background-color: white;height: 500px;width: auto;padding: 25px;overflow: scroll;box-shadow: 1px 1px 5px 1px rgba(182,170,170,0.31);border-radius: 10px">
+                                            <b style="top: 0px">Example protein sequences: <br><a href="/static/userUpload/userDownload/example_file.fa"
+                                                                                          style="color: #1E9FFF;">Download
+                                                example
+                                                file</a></b>
+                                            <div style="height: 100%;width: auto;word-wrap: break-word;word-break: normal;margin-top: 25px">
+                                                <p style="font-weight: 600">>TGDOM2_208440</p><br>
+                                                <p style="">
+                                                    MNTFFLTPAAAAARRVAVSFFARSSASGFPQHRVALRPFPSQRPAERAHNLAKSQTLRSVKAHGRQSGKKEQSTESGGRRGFRAAVGAGTGCMLAASPMLFTDYDNTASPKSELIFMAGNALGYCTERFFENEYGQSIFMFALGLAYLAMLGHEGKIHGAVWRMKHLFATNFKMVGHPRYAYALPKNPLLQDAAPTKTGSTSAKK
+                                                <br><br>
+                                                <p style="font-weight: 600">&gt;XP_002365701.1</p><br>
+                                                <p style="">
+                                                    MVRVSAIVGAAASVFVCLSAGAYAAEGGDNQSSAVSDRASLLGLLSGGTGQGLGIGESVELEMMGNTYRVERPTGNPDLLKIAIKTSDGSYSEVGNVNMEEVIDTMKSMQRDEEIFFRALNKGETVEEAIEDVAQAEGLNSEQTLQLEDAVSAVASVVQDEMNVIDDVQQLEKDKQQLKDDIGFLTGERE
+                                                <br><br>
+                                                <p style="font-weight: 600">>KEP66778.1</p><br>
+                                                <p style="">
+                                                    MVRVSAIVGAAASVFVCLSAGAYAAEGGDNQSSAVSDRSSLLALLGGGPGRGLGIGESVELEILGSIYRVERPKHNPDLLLIAIKTPDGSYSEVGNVSMEEVMETMNSMQRDEDIFLRALNKGETVEEAIEDVAQAEGLTSEQTLQLEDAVSAVASVVHDEMKVLEDVRQLEKDKQQLKEDMEFLTGERE
+                                                <br><br>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
-                            <div class="layui-panel">
-                                <div id="modal" class="layui-hide"
-                                     style="z-index: 1000;background:rgba(255,255,255,0.1);height: 100%;width: 100%;position: absolute;text-align: center;">
-                                    <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"
-                                       style="margin-top: 260px;font-size:50px;position: relative;">&#xe63d;</i>
-                                </div>
-                                <div style="padding: 30px 20px;overflow: hidden">
-                                    <div style="background-color: white;height: 500px;width: auto;padding: 25px 25px 25px 0;">
+                            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
+                                <div class="layui-panel">
+                                    <div id="modal" class="layui-hide"
+                                         style="z-index: 1000;background:rgba(255,255,255,0.1);height: 100%;width: 100%;position: absolute;text-align: center;">
+                                        <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"
+                                           style="margin-top: 260px;font-size:50px;position: relative;">&#xe63d;</i>
+                                    </div>
+                                    <div style="padding: 30px 20px;overflow: hidden">
+                                        <div style="background-color: white;height: 500px;width: auto;padding: 25px 25px 25px 0;box-shadow: 1px 1px 5px 1px  rgba(182,170,170,0.31);border-radius: 10px">
 
-                                        <form class="layui-form" action="" method="GET">
-                                            <input type="text" name="filename" value="" class="layui-hide"
-                                                   id="filename">
-                                            <div class="layui-form-item" style="margin-top: 50px">
-                                                <label class="layui-form-label">E-mail:</label>
-                                                <div class="layui-input-block">
-                                                    <input type="text" name="email" required lay-verify="required"
-                                                           placeholder="email" autocomplete="on" class="layui-input" />
+                                            <form class="layui-form" action="" method="GET">
+                                                <input type="text" name="filename" value="" class="layui-hide"
+                                                       id="filename">
+                                                <div class="layui-form-item" style="margin-top: 30px">
+                                                    <label class="layui-form-label">E-mail:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="email" required lay-verify="required" lay-reqText="Required fields cannot be empty."
+                                                               placeholder="email" autocomplete="on"
+                                                               class="layui-input"/>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="layui-form-item" style="margin-top: 25px">
-                                                <label class="layui-form-label">Name:</label>
-                                                <div class="layui-input-block">
-                                                    <input type="text" name="name" required lay-verify="required"
-                                                           placeholder="name" autocomplete="on" class="layui-input" />
+                                                <div class="layui-form-item" style="margin-top: 25px">
+                                                    <label class="layui-form-label">Name:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="name" required lay-verify="required" lay-reqText="Required fields cannot be empty."
+                                                               placeholder="name" autocomplete="on"
+                                                               class="layui-input"/>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="layui-form-item layui-form-text">
-                                                <label class="layui-form-label">Please paste/upload in FASTA
-                                                    format</label>
-                                                <div class="layui-input-block">
+                                                <div class="layui-form-item layui-form-text">
+                                                    <label class="layui-form-label">Please paste/upload in FASTA
+                                                        format</label>
+                                                    <div class="layui-input-block">
                                                     <textarea name="textarea" placeholder="content" id="textarea"
-                                                              class="layui-textarea" style="height: 100px" ></textarea>
+                                                              class="layui-textarea" style="height: 100px"></textarea>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="layui-upload-drag" id="test10"
-                                                 style="width: 190px;height: 100px;margin-left: 110px;padding: 25px">
-                                                <div id="Icon">
-                                                    <i class="layui-icon"></i>
-                                                    <p>Click Upload or drag the file here</p>
-                                                </div>
-                                                {#进度条#}
-                                                <div class="layui-hide layui-progress layui-progress-big"
-                                                     id="ProcessBar" lay-showpercent="true"
-                                                     lay-filter="layui_ProcessBar">
-                                                    <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
-                                                </div>
-                                                {#上传后显示文件名#}
-                                                <div class="layui-hide" id="uploadDemoView"
-                                                     style="font-weight: 600;height: 100%;width: 100%;padding: 5px 0 0 0">
+                                                <div class="layui-upload-drag" id="test10"
+                                                     style="width: 190px;height: 100px;margin-left: 110px;padding: 25px">
+                                                    <div id="Icon">
+                                                        <i class="layui-icon"></i>
+                                                        <p>Click Upload or drag the file here</p>
+                                                    </div>
+                                                    {#进度条#}
+                                                    <div class="layui-hide layui-progress layui-progress-big"
+                                                         id="ProcessBar" lay-showpercent="true"
+                                                         lay-filter="layui_ProcessBar">
+                                                        <div class="layui-progress-bar layui-bg-red"
+                                                             lay-percent="0%"></div>
+                                                    </div>
+                                                    {#上传后显示文件名#}
+                                                    <div class="layui-hide" id="uploadDemoView"
+                                                         style="font-weight: 600;height: 100%;width: 100%;padding: 5px 0 0 0">
 
-                                                    <i class="layui-icon layui-icon-file">&#xe621;</i>
-                                                    <p id="FileName"
-                                                       style="width: auto;margin-top: 5px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;"></p>
+                                                        <i class="layui-icon layui-icon-file">&#xe621;</i>
+                                                        <p id="FileName"
+                                                           style="width: auto;margin-top: 5px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;"></p>
 
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="layui-form-item" style="margin-top: 25px">
-                                                <div class="layui-input-block">
-                                                    <button class="layui-btn layui-col-md-offset2" lay-submit
-                                                            lay-filter="formDemo">Submit
-                                                    </button>
-                                                    <button id="reset" type="reset" class="layui-btn layui-btn-primary" onclick="Reset()">
-                                                        Reset
-                                                    </button>
+                                                <div class="layui-form-item" style="margin-top: 25px">
+                                                    <div class="layui-input-block">
+                                                        <button class="layui-btn layui-col-md-offset2" lay-submit
+                                                                lay-filter="formDemo">Submit
+                                                        </button>
+                                                        <button id="reset" type="reset"
+                                                                class="layui-btn layui-btn-primary"
+                                                                onclick="Reset()">
+                                                            Reset
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -184,89 +204,77 @@
                 </div>
             </div>
             {# Citation #}
-            <fieldset class="layui-elem-field layui-field-title" id="Citation" style="margin-top: 20px;">
-                <legend>Citation</legend>
-            </fieldset>
+            <div style="border: 1px solid #bce7f1;margin-top: 20px;height: 225px;border-radius: 5px ">
+                <div style="border: 1px solid rgba(209,240,250,0.89);background-color: rgba(209,240,250,0.89); ">
+                    <fieldset class="layui-elem-field layui-field-title" id="Citation" style="margin-top: 20px;">
+                        <legend style="color:#31708f;font-size: 25px">Citation</legend>
+                    </fieldset>
+                </div>
+                <div class=" layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
+                     style="padding: 25px;">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12" style="border-radius: 10px;">
+                            <div class="layui-card">
 
-            <div class="layui-bg-gray layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
-                 style="padding: 30px;">
-                <div class="layui-row layui-col-space15">
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header">卡片面板</div>
-                            <div class="layui-card-body">
-                                卡片式面板面板通常用于非白色背景色的主体内<br>
-                                从而映衬出边框投影
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header">卡片面板</div>
-                            <div class="layui-card-body">
-                                结合 layui 的栅格系统<br>
-                                轻松实现响应式布局
+                                <div class="layui-card-body">
+                                    <p style="font-size: 18px;font-family: 'Microsoft YaHei UI'">Please cite the following paper when using the server and data at this website:<br>
+                                    </p>
+                                    <p style="font-size: 18px;margin-top: 10px;font-family: 'Microsoft YaHei UI Light'">Haoyuan Shi, Haisong Feng, Wei Xue and Zhenyu Yue*, GRA-GCN: dense granule protein prediction in
+                                        Apicomplexa protozoa through graph convolutional network, 2022, Submitted.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             {# Contact #}
-            <fieldset class="layui-elem-field layui-field-title" id="Contact" style="margin-top: 20px;">
-                <legend>Contact</legend>
-            </fieldset>
+            <div style="border: 1px solid #bce7f1;margin-top: 20px;height: 200px;border-radius: 5px ">
+                <div style="border: 1px solid rgba(209,240,250,0.89);background-color: rgba(209,240,250,0.89);">
+                    <fieldset class="layui-elem-field layui-field-title" id="Contact" style="margin-top: 20px;">
+                        <legend style="color:#31708f;font-size: 25px">Contact</legend>
+                    </fieldset>
+                </div>
 
-            <div class="layui-bg-gray layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
-                 style="padding: 30px;">
-                <div class="layui-row layui-col-space15">
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header">卡片面板</div>
-                            <div class="layui-card-body">
-                                卡片式面板面板通常用于非白色背景色的主体内<br>
-                                从而映衬出边框投影
+                <div class=" layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
+                     style="padding: 25px;">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12" style="border-radius: 10px">
+                            <div class="layui-card">
+
+                                <div class="layui-card-body">
+                                    <p style="font-size: 18px;font-family: 'Microsoft YaHei UI'">If you have any problem for our website, feel free to
+                                        contact us via email:</p>
+                                    <p style="font-size: 18px;margin-top: 10px;font-family: 'Microsoft YaHei UI'">haoyuanshi@stu.ahau.edu.cn</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header">卡片面板</div>
-                            <div class="layui-card-body">
-                                结合 layui 的栅格系统<br>
-                                轻松实现响应式布局
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
+<!--            <div style="border: 1px solid #bce7f1;margin-top: 20px;height: 170px;border-radius: 5px ">-->
+<!--                <div style="border: 1px solid rgba(209,240,250,0.89);background-color:rgba(209,240,250,0.89);">-->
+<!--                    <fieldset class="layui-elem-field layui-field-title" id="Download" style="margin-top: 20px;">-->
+<!--                        <legend style="color:#31708f;font-size: 25px">Download</legend>-->
+<!--                    </fieldset>-->
+<!--                </div>-->
+<!--                {# Download #}-->
+<!--                <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"-->
+<!--                     style="padding: 30px;">-->
+<!--                    <div class="layui-row layui-col-space15">-->
+<!--                        <div class="layui-col-md12" style="border-radius: 10px">-->
+<!--                            <div class="layui-card">-->
 
-            <fieldset class="layui-elem-field layui-field-title" id="Download" style="margin-top: 20px;">
-                <legend>Download</legend>
-            </fieldset>
-            {# Download #}
-            <div class="layui-bg-gray layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12"
-                 style="padding: 30px;">
-                <div class="layui-row layui-col-space15">
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header">卡片面板</div>
-                            <div class="layui-card-body">
-                                卡片式面板面板通常用于非白色背景色的主体内<br>
-                                从而映衬出边框投影
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-col-md6">
-                        <div class="layui-card">
-                            <div class="layui-card-header">卡片面板</div>
-                            <div class="layui-card-body">
-                                结合 layui 的栅格系统<br>
-                                轻松实现响应式布局
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--                                <div class="layui-card-body">-->
+<!--                                    <p style="font-size: 18px;font-family: 'Microsoft YaHei UI'">Please click <a href="#" style="color: #1E9FFF">here</a>-->
+<!--                                        to download codes.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
     </div>
@@ -283,6 +291,7 @@
     </div>
 </div>
 <script src="/static/layui-v2.6.8/layui/layui.js"></script>
+<!--<script src="/static/layui/layui.all.js"></script>-->
 <script src="/static/js/jquery-1.9.1.min.js"></script>
 <script>
     layui.use('element', function () {
@@ -305,11 +314,11 @@
                 success: function (data) {
                     $('#modal').addClass('layui-hide')
                     if (data.state === 100) {
-                        var number = data.queue_size-1
-                        if (number==0){
-                            layer.msg(data.verify_res,{icon: 1})
-                        }else {
-                            layer.msg(data.verify_res + "There are " + number + " more people in line ahead.",{icon: 1})
+                        var number = data.queue_size - 1
+                        if (number == 0) {
+                            layer.msg(data.verify_res, {icon: 1})
+                        } else {
+                            layer.msg(data.verify_res + (number>1?"There are &nbsp":"There is &nbsp") + number + " more people in line ahead.", {icon: 1})
                         }
                     } else if (data.state === 200) {
                         layer.msg(data.verify_res, {icon: 2})
@@ -317,7 +326,7 @@
                         layer.msg(data.verify_res, {icon: 0})
                     } else if (data.state === 400) {
                         layer.msg(data.verify_res, {icon: 2})
-                    }else if (data.state === 500) {
+                    } else if (data.state === 500) {
                         layer.msg(data.verify_res, {icon: 2})
                     }
                     // 100 数据正确
@@ -328,7 +337,7 @@
                 }
                 , error: function (data) {
                     $('#modal').addClass('layui-hide')
-                    layer.msg(data.verify_res, {icon: 2})
+                    layer.msg('Uploading interface is abnormal.', {icon: 2})
                 }
             })
             // layer.msg(JSON.stringify(data.field));
@@ -355,7 +364,7 @@
             , method: 'GET'
             , exts: 'fasta|fa'
             , url: '../../GRAGCN/txt_upDownload/' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
-            , done: function (res) {
+            , done: function (res,upload) {
                 if (res.state === 100) {
                     layer.msg('Uploaded successfully.');
                     layui.$('#filename').val(res.filename)
@@ -382,18 +391,20 @@
                 var percent = n + '%' //获取进度百分比
                 element.progress('layui_ProcessBar', percent); //可配合 layui 进度条元素使用
             }
+
         });
     })
-    function Reset(){
+
+    function Reset() {
         /*
         *  func： 先查看用户是否能输入，如过不能则将readonly属性去掉
         * */
         var state = layui.$('#textarea').attr('readonly')
-        if (state !== undefined){
-            layui.$('#textarea').val('').removeAttr("readonly").css('background-color','')
+        if (state !== undefined) {
+            layui.$('#textarea').val('').removeAttr("readonly").css('background-color', '')
         }
         layui.$('#filename').val('')
-            // layui.$('#textarea').val('').attr({readonly: 'true'}).css('background-color', '#80808036')
+        // layui.$('#textarea').val('').attr({readonly: 'true'}).css('background-color', '#80808036')
     }
 </script>
 </body>

@@ -11,7 +11,6 @@
 <!--    <link rel="stylesheet" href="/static/layui-v2.6.8/layui/css/layui.css">-->
 
     <link rel="stylesheet" href="/static/css/DB_CSS/home.css"/>
-    <link rel="icon" href="/static/favicon.ico" type="image/gif">
 </head>
 
 <body>
@@ -56,15 +55,15 @@
                 </colgroup>
                 <tbody>
                 <tr class="gene_name">
-                    <td>Gene_name</td>
+                    <td>Gene name</td>
                     <td class="gene_name" id="gene_name"></td>
                 </tr>
                 <tr class="organism">
-                    <td>Organism</td>
+                    <td>Species</td>
                     <td class="organism"></td>
                 </tr>
                 <tr class="evidece_level">
-                    <td>Evidece_level</td>
+                    <td>Evidece level</td>
                     <td class="evidece_level"></td>
                 </tr>
                 <tr class="intron">
@@ -72,31 +71,31 @@
                     <td class="intron"></td>
                 </tr>
                 <tr class="signal_peptide">
-                    <td>Signal_peptide</td>
+                    <td>Signal peptide</td>
                     <td class="signal_peptide"></td>
                 </tr>
                 <tr class="tmhmm">
-                    <td>Tmhmm</td>
+                    <td>Transmembrane domain</td>
                     <td class="tmhmm"></td>
                 </tr>
                 <tr class="pmid">
-                    <td>Pmid</td>
+                    <td>Reference</td>
                     <td class="pmid"></td>
                 </tr>
 
                 <tr class="molecular_weight">
-                    <td>Molecular_weight</td>
+                    <td>Molecular weight</td>
                     <td class="molecular_weight"></td>
                 </tr>
 
                 <tr class="domains">
-                    <td>Domains</td>
+                    <td>Domain</td>
                     <td class="domains"></td>
                 </tr>
 
 
                 <tr>
-                    <td>Protein_Sequence</td>
+                    <td>Protein sequence</td>
                     <td style="padding:0;margin:0;">
                         <table class="layui-table" style="margin:-1px 0">
                             <colgroup>
@@ -116,7 +115,7 @@
                                     <button class="layui-btn" id="acqSeq">Acquire Sequence</button>
                                     <p style="word-wrap:break-word;width: 500px;text-align: left" id="sequence"></p>
                                 </th>
-                                <th class="Reference" style="text-align: center">ToxoDB、NCBI、Uniprot</th>
+                                <th class="Reference" style="text-align: center">ToxoDB,&nbspNCBI,&nbspUniprot</th>
                             </tr>
                             </tbody>
                         </table>
@@ -142,7 +141,7 @@
 
                 <div class="copyright">
                     Copyright©
-                    <a class="ow" href="https://www.ahau.edu.cn/" target="_blank">AnHui Argricultural University</a>
+                    <a class="ow" href="http://eng.ahau.edu.cn/" target="_blank">Anhui Argricultural University</a>
                     ©All Rights Reserved.
                 </div>
 
@@ -174,7 +173,7 @@
             </div>
 
             <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">New findings in oncology </label>
+                <label class="layui-form-label">New findings in GRAs </label>
                 <div class="layui-input-block">
 							<textarea id="text" name="More" placeholder="" lay-verify="limitLength" maxlength="500"
                                       class="layui-textarea"></textarea>
@@ -214,7 +213,7 @@
                     anim: 2,
                     skin: 'demo-class',
                     type: 1,
-                    title: '感谢您的评论' //不显示标题栏
+                    title: 'Thank you for your advice' //不显示标题栏
                     ,
                     closeBtn: 0,
                     area: '600px;',
@@ -349,7 +348,7 @@
                     continue;
                 }
                 if (keys[keyid] == 'evidece_level') {
-                    $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
+                    $('.' + keys[keyid])[1].innerHTML = 'Level&nbsp' + data[keys[keyid]];
                     continue;
                 }
                 if (keys[keyid] == 'intron') {
@@ -364,11 +363,12 @@
                     $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
                     continue;
                 }
+                str = "https://pubmed.ncbi.nlm.nih.gov/"+ toString(data[keys[keyid]]) + "/"
                 if (keys[keyid] == 'pmid') {
-                    if (data[keys[keyid]] != '') {
-                        $('.' + keys[keyid])[1].innerHTML = data[keys[keyid]];
-                    } else {
-                        $('.' + keys[keyid])[1].innerHTML = "<p style='color:red;'>No Data Source</p>"
+                    if (data[keys[keyid]] != '-') {
+                        $('.' + keys[keyid])[1].innerHTML = "<a target=\"_blank\" href= 'https://pubmed.ncbi.nlm.nih.gov/" + data[keys[keyid]] +"/'" + ">" + data[keys[keyid]] + "&nbsp(PMID)</a>";
+                    } else{
+                        $('.' + keys[keyid])[1].innerHTML = "<p>-</p>"
                     }
 
                     continue;

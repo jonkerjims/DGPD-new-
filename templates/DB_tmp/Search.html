@@ -6,7 +6,6 @@
     <title>DGPD</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css">
     <link rel="stylesheet" href="/static/css/DB_CSS/home.css">
-    <link rel="icon" href="/static/favicon.ico" type="image/gif">
 </head>
 
 <body>
@@ -59,7 +58,7 @@
             <div class="layui-row" id="footer">
                 <div class="copyright">
                     Copyright©
-                    <a class="ow" href="https://www.ahau.edu.cn/" target="_blank">AnHui Argricultural University</a>
+                    <a class="ow" href="http://eng.ahau.edu.cn/" target="_blank">Anhui Argricultural University</a>
                     ©All
                     Rights
                     Reserved.
@@ -78,7 +77,7 @@
     <a  href="../Details?organism={{ d.organism }}&gene_name={{ d.gene_name }}&evidece_level={{ d.evidece_level }}&intron={{ d.intron }}&signal_peptide={{ d.signal_peptide }}&tmhmm={{ d.tmhmm }}&pmid={{ d.pmid }}&molecular_weight={{ d.molecular_weight }}&domains={{ d.domains }}"       class="layui-table-link" style="color:#009688;" title="{{d.organism}}">{{ d.organism}} </a>
 </script>
 <script type="text/html" id="display_evidece_level">
-    <a  href="../Details?organism={{ d.organism }}&gene_name={{ d.gene_name }}&evidece_level={{ d.evidece_level }}&intron={{ d.intron }}&signal_peptide={{ d.signal_peptide }}&tmhmm={{ d.tmhmm }}&pmid={{ d.pmid }}&molecular_weight={{ d.molecular_weight }}&domains={{ d.domains }}"       class="layui-table-link" style="color:#009688;" title="{{d.evidece_level}}">{{ d.evidece_level}} </a>
+    <a  href="../Details?organism={{ d.organism }}&gene_name={{ d.gene_name }}&evidece_level={{ d.evidece_level }}&intron={{ d.intron }}&signal_peptide={{ d.signal_peptide }}&tmhmm={{ d.tmhmm }}&pmid={{ d.pmid }}&molecular_weight={{ d.molecular_weight }}&domains={{ d.domains }}"       class="layui-table-link" style="color:#009688;" title="{{d.evidece_level}}">Level&nbsp{{ d.evidece_level}} </a>
 </script>
 <script type="text/html" id="display_intron">
     <a  href="../Details?organism={{ d.organism }}&gene_name={{ d.gene_name }}&evidece_level={{ d.evidece_level }}&intron={{ d.intron }}&signal_peptide={{ d.signal_peptide }}&tmhmm={{ d.tmhmm }}&pmid={{ d.pmid }}&molecular_weight={{ d.molecular_weight }}&domains={{ d.domains }}"       class="layui-table-link" style="color:#009688;" title="{{d.intron}}">{{ d.intron}} </a>
@@ -136,9 +135,9 @@
 
     function get_url() {
         var str = '';
-        str += ((gene_name != null && gene_name != '') ? ('<b>Gene_name: &nbsp;</b>' + gene_name + '; ') : '');
-        str += ((organism != null && organism != '') ? ('<b>Organism: &nbsp;</b>' + organism + '; ') : '');
-        str += ((userInput != null && userInput != '') ? ('<b>userInput: &nbsp;</b>' + userInput + '; ') : '');
+        str += ((gene_name != null && gene_name != '') ? ('<b>Gene name: &nbsp;</b>' + gene_name + ' ') : '');
+        str += ((organism != null && organism != '') ? ('<b>Species: &nbsp;</b>' + organism + ' ') : '');
+        str += ((userInput != null && userInput != '') ? ('<b>userInput: &nbsp;</b>' + userInput + ' ') : '');
         document.getElementById('quote').innerHTML = str;
     }
 
@@ -164,15 +163,15 @@
         },
 
         cols: [[
-            {field: 'gene_name', title: 'Gene_name', width:130, sort: true, templet:'#display_gene_name'}
-          ,{field: 'organism', title: 'Organism', width:130, sort: true, templet:'#display_organism'}
-          ,{field: 'evidece_level', title: 'Evidece_level', width:130, sort: false, templet:'#display_evidece_level'}
-          ,{field: 'intron', title: 'Intron', width:80, templet:'#display_intron'}
-          ,{field: 'signal_peptide', title: 'Signal_Peptide', width: 140, templet:'#display_signal_peptide'}
-          ,{field: 'tmhmm', title: 'TMHMM', width: 100, sort: false, templet:'#display_tmhmm'}
-          ,{field: 'pmid', title: 'Pmid', width: 80, sort: false, templet:'#display_pmid'}
-          ,{field: 'molecular_weight', title: 'Molecular_Weight', width: 200, templet:'#display_molecular_weight'}
-          ,{field: 'domains', title: 'Domains', sort: false, templet:'#display_domains'}
+            {field: 'gene_name', title: 'Gene name', width:140, sort: true, templet:'#display_gene_name'}
+          ,{field: 'organism', title: 'Species', width:130, sort: true, templet:'#display_organism'}
+          ,{field: 'evidece_level', title: 'Evidece level', width:115, sort: false, templet:'#display_evidece_level'}
+          ,{field: 'intron', title: 'Intron', width:75, templet:'#display_intron'}
+          ,{field: 'signal_peptide', title: 'Signal peptide', width: 125, templet:'#display_signal_peptide'}
+          ,{field: 'tmhmm', title: 'Transmembrane domain', width: 190, sort: false, templet:'#display_tmhmm'}
+          ,{field: 'pmid', title: 'Reference', width: 100, sort: false, templet:'#display_pmid'}
+          ,{field: 'molecular_weight', title: 'Molecular weight', width: 140, templet:'#display_molecular_weight'}
+          ,{field: 'domains', title: 'Domain', sort: false, templet:'#display_domains'}
         ]],
 
     })

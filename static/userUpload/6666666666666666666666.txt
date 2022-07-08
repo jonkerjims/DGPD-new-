@@ -1,1 +1,0 @@
- python iLearn-protein-basic.py --file examples/protein_sequences.txt --method CKSAAP

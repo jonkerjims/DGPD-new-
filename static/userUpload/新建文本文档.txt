@@ -1,6 +1,0 @@
-docker run --name contract -p 18080:80 -v /home/contract-accounting-system-master:/home/contract-accounting-system-master -itd jasonxue1688/bioinformatics_1.0:cyq
-docker run --name jason_contract -p 18081:80 -v /home/contract-accounting-system-master:/home/contract-accounting-system-master -itd zinobe/python37
-
-/www/django
-
-/www/django/ApiServer
